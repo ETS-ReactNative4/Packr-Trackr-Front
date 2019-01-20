@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground } from 'react-native';
 import ListItem from './components/ListItem'
+import homeImage from './assets/homeImage.jpg'
 
 export default class App extends React.Component {
     constructor() {
@@ -30,26 +31,30 @@ export default class App extends React.Component {
             <ListItem key={i} i={i} users={user} />
         ))
         return (
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Still? WORKING?</Text>
-                <Text>Still? WORKING?</Text>
-                <Text>{this.state.username}</Text>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        onChangeText={this.userNameChangeHandler}
-                        style={styles.placeInput} placeholder='username' />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        onChangeText={this.passwordChangeHandler}
-                        style={styles.placeInput} placeholder='password' />
-                </View>
-                <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
-                <ScrollView style={styles.scroller}>
-                    <View style={styles.userList}>{users}</View>
-                </ScrollView>
-            </View>
+            <View>
+                <ImageBackground source={homeImage} style={styles.baseImage}>
+                    <View style={styles.container}>
+                        <View style={styles.header}>
+                            <Text style={styles.headerText}>Packr Trackr</Text>
+                        </View>
+                        <Text>{this.state.username}</Text>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                onChangeText={this.userNameChangeHandler}
+                                style={styles.placeInput} placeholder='username' />
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                onChangeText={this.passwordChangeHandler}
+                                style={styles.placeInput} placeholder='password' />
+                        </View>
+                        <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
+                        <ScrollView style={styles.scroller}>
+                            <View style={styles.userList}>{users}</View>
+                        </ScrollView>
+                    </View>
+                </ImageBackground>
+            </View >
         );
     }
 }
@@ -57,12 +62,22 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingTop: 20,
-        backgroundColor: '#fff',
+        // flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+    },
+    header: {
+        paddingTop: 20,
+        backgroundColor: 'rgba(230, 230, 230, 0.5)',
+        width: '100%',
+        borderBottomWidth: 1,
+        borderBottomColor: 'black'
+    },
+    headerText: {
+        textAlign: 'center',
+        fontSize: 20,
+
     },
     inputContainer: {
         width: '100%',
@@ -85,6 +100,9 @@ const styles = StyleSheet.create({
     },
     scroller: {
         width: '80%',
+    },
+    baseImage: {
+        height: '100%',
     }
 
 });
