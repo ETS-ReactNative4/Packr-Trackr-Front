@@ -15,17 +15,10 @@ export default class App extends React.Component {
         }
     }
     // DDDDDAAAAAANNNNNN
-    // inputHandler = (event) => {
-    //     const { value, name } = event.target
-    //     this.setState({
-    //         [name]: value
-    //     })
-    // }
-    userNameChangeHandler = (value) => {
-        this.setState({ username: value });
-    }
-    passwordChangeHandler = (value) => {
-        this.setState({ password: value });
+    inputHandler = (name) => (value) => {
+        this.setState({
+            [name]: value
+        })
     }
     submitHandler = (event) => {
         if (this.state.username === '' || this.state.password === '') {
@@ -48,13 +41,12 @@ export default class App extends React.Component {
                         <Text>{this.state.username}</Text>
                         <View style={styles.inputContainer}>
                             <TextInput
-                                onChangeText={this.userNameChangeHandler}
-                                name='username' style={styles.placeInput} value={this.state.username} placeholder='username' />
+                                onChangeText={this.inputHandler('username')}
+                                style={styles.placeInput} value={this.state.username} placeholder='username' />
                         </View>
                         <View style={styles.inputContainer}>
                             <TextInput
-                                onChangeText={this.passwordChangeHandler}
-                                name='password'
+                                onChangeText={this.inputHandler('password')}
                                 style={styles.placeInput} value={this.state.password} placeholder='password' />
                         </View>
                         <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
