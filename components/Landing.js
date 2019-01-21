@@ -13,7 +13,7 @@ const Landing = (props) => {
 const styles = StyleSheet.create({
     landingButton: {
         width: '80%',
-        color: 'grey'
+        color: 'black'
     }
 })
 
