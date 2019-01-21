@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground } from 'react-native';
 import ListItem from './components/ListItem'
 import homeImage from './assets/homeImage.jpg'
+import Header from './components/Header'
+import Landing from './components/Landing'
 
 export default class App extends React.Component {
     constructor() {
@@ -12,6 +14,13 @@ export default class App extends React.Component {
             users: []
         }
     }
+    // DDDDDAAAAAANNNNNN
+    // inputHandler = (event) => {
+    //     const { value, name } = event.target
+    //     this.setState({
+    //         [name]: value
+    //     })
+    // }
     userNameChangeHandler = (value) => {
         this.setState({ username: value });
     }
@@ -23,7 +32,7 @@ export default class App extends React.Component {
             return
         }
         this.setState({
-            users: [...this.state.users, { username: this.state.username, password: this.state.password },]
+            users: [...this.state.users, { username: this.state.username, password: this.state.password },],
         })
     }
     render() {
@@ -34,19 +43,19 @@ export default class App extends React.Component {
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
                     <View style={styles.container}>
-                        <View style={styles.header}>
-                            <Text style={styles.headerText}>Packr Trackr</Text>
-                        </View>
+                        <Header />
+                        <Landing />
                         <Text>{this.state.username}</Text>
                         <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.userNameChangeHandler}
-                                style={styles.placeInput} placeholder='username' />
+                                name='username' style={styles.placeInput} value={this.state.username} placeholder='username' />
                         </View>
                         <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.passwordChangeHandler}
-                                style={styles.placeInput} placeholder='password' />
+                                name='password'
+                                style={styles.placeInput} value={this.state.password} placeholder='password' />
                         </View>
                         <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
                         <ScrollView style={styles.scroller}>
@@ -66,18 +75,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'column',
-    },
-    header: {
-        paddingTop: 20,
-        backgroundColor: 'rgba(230, 230, 230, 0.5)',
-        width: '100%',
-        borderBottomWidth: 1,
-        borderBottomColor: 'black'
-    },
-    headerText: {
-        textAlign: 'center',
-        fontSize: 20,
-
     },
     inputContainer: {
         width: '100%',
