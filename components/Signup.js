@@ -28,6 +28,7 @@ const Signup = (props) => {
                 <View>
                     <Button title='Submit' onPress={props.submitHandler} />
                     <Button onPress={props.loginButtonClick} title='Existing User?' />
+                    <Button onPress={props.modalCloseHandler('selectedSignup')} color='red' title='Close' />
                 </View>
             </View>
         </Modal>

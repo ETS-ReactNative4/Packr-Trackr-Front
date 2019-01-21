@@ -42,25 +42,29 @@ export default class App extends React.Component {
             users: [...this.state.users, { username: this.state.username, password: this.state.password },],
         })
     }
+    loginOptionHandler = (name) => () => {
+        this.setState({
+            [name]: true
+        })
+    }
     loginButtonClick = (event) => {
         this.setState({
             selectedLogin: true,
             selectedSignup: false,
-
         })
     }
     signupButtonClick = (event) => {
         this.setState({
             selectedSignup: true,
             selectedLogin: false
-
         })
     }
-    // loginOptionHandler = (name) => {
-    //     this.setState({
-    //         [name]: true
-    //     })
-    // }
+    modalCloseHandler = (name) => () => {
+        this.setState({
+            [name]: false,
+        })
+    }
+
     render() {
         const users = this.state.users.map((user, i) => (
             <ListItem key={i} i={i} users={user} />
@@ -70,9 +74,9 @@ export default class App extends React.Component {
                 <Header />
                 <ImageBackground source={homeImage} style={styles.baseImage}>
                     <View style={styles.container}>
-                        <Landing signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} />
-                        <Login signupButtonClick={this.signupButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
-                        <Signup loginButtonClick={this.loginButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
+                        <Landing loginOptionHandler={this.loginOptionHandler} signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} />
+                        <Login modalCloseHandler={this.modalCloseHandler} signupButtonClick={this.signupButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
+                        <Signup modalCloseHandler={this.modalCloseHandler} loginButtonClick={this.loginButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
                         <Text>{this.state.username}</Text>
                         <View style={styles.inputContainer}>
                             <TextInput
