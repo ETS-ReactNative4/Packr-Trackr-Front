@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground } from 'react-native';
 import ListItem from './components/ListItem'
-import homeImage from './assets/homeImage.jpg'
+import homeImage from './assets/homeImage2.jpg'
 import Header from './components/Header'
 import Landing from './components/Landing'
+import Login from './components/Login'
+import Signup from './components/Signup'
 
 export default class App extends React.Component {
     constructor() {
@@ -11,43 +13,76 @@ export default class App extends React.Component {
         this.state = {
             username: '',
             password: '',
-            users: []
+            users: [],
+            email: '',
+            country: '',
+            selectedLogin: false,
+            selectedSignup: false,
         }
     }
-    // DDDDDAAAAAANNNNNN
     inputHandler = (name) => (value) => {
         this.setState({
             [name]: value
         })
     }
-    submitHandler = (event) => {
-        if (this.state.username === '' || this.state.password === '') {
-            return
+    submitHandler = () => {
+        if (this.state.selectedLogin === true) {
+            if (this.state.username === '' || this.state.password === '') {
+                return
+            }
+            this.setState({
+                users: [...this.state.users, { username: this.state.username, password: this.state.password },],
+            })
+        }
+        else if (this.state.selectedSignup === true) {
+            if (this.state.username === '' || this.state.password === '' || this.state.email === '' || this.state.country === '')
+                return
         }
         this.setState({
             users: [...this.state.users, { username: this.state.username, password: this.state.password },],
         })
     }
+    loginButtonClick = (event) => {
+        this.setState({
+            selectedLogin: true,
+            selectedSignup: false,
+
+        })
+    }
+    signupButtonClick = (event) => {
+        this.setState({
+            selectedSignup: true,
+            selectedLogin: false
+
+        })
+    }
+    // loginOptionHandler = (name) => {
+    //     this.setState({
+    //         [name]: true
+    //     })
+    // }
     render() {
         const users = this.state.users.map((user, i) => (
             <ListItem key={i} i={i} users={user} />
         ))
         return (
             <View>
+                <Header />
                 <ImageBackground source={homeImage} style={styles.baseImage}>
                     <View style={styles.container}>
-                        <Header />
-                        <Landing />
+                        <Landing signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} />
+                        <Login signupButtonClick={this.signupButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
+                        <Signup loginButtonClick={this.loginButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
                         <Text>{this.state.username}</Text>
                         <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.inputHandler('username')}
-                                style={styles.placeInput} value={this.state.username} placeholder='username' />
+                                style={styles.inputField} value={this.state.username} placeholder='username' />
                         </View>
                         <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.inputHandler('password')}
-                                style={styles.placeInput} value={this.state.password} placeholder='password' />
+                                style={styles.inputField} value={this.state.password} placeholder='password' />
                         </View>
                         <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
                         <ScrollView style={styles.scroller}>
@@ -74,7 +109,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    placeInput: {
+    inputField: {
         width: '70%',
         borderColor: 'black',
         borderWidth: 1,
@@ -88,10 +123,10 @@ const styles = StyleSheet.create({
         flexDirection: 'column-reverse'
     },
     scroller: {
-        width: '80%',
+        width: '85%',
     },
     baseImage: {
-        height: '100%',
+        height: '95%',
     }
 
 });

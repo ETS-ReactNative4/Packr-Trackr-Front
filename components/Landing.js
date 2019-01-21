@@ -1,11 +1,15 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, Button, StyleSheet } from 'react-native'
 
 const Landing = (props) => {
     return (
         <View>
-            <Button onPress={this.loginClick} style={styles.landingButton} title='Login' />
-            <Button onPress={this.signupClick} style={styles.landingButton} title='Sign Up' />
+            <View style={styles.landingButton} >
+                <Button onPress={props.loginButtonClick} color='white' title='Login' />
+            </View>
+            <View style={styles.landingButton}>
+                <Button onPress={props.signupButtonClick} color='white' title='Sign Up' />
+            </View>
         </View>
     )
 }
@@ -13,7 +17,9 @@ const Landing = (props) => {
 const styles = StyleSheet.create({
     landingButton: {
         width: '80%',
-        color: 'black'
+        backgroundColor: '#0098F7',
+        margin: 15,
+        borderRadius: 10
     }
 })
 
