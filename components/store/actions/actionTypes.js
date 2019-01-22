@@ -1,2 +1,6 @@
-export const ADD_USER = 'ADD_USER'
+export const ADD_USERNAME = 'ADD_USERNAME'
 export const SELECT_USER = 'SELECT_USER'
+export const ADD_PASSWORD = 'ADD_PASSWORD'
+export const INPUT_HANDLER = 'INPUT_HANDLER'
+export const SUBMIT_USER = 'SUBMIT_USER'
+export const DESELECT_USER = 'DESELECT_USER'

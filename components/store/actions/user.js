@@ -1,8 +1,37 @@
-import { ADD_USER } from './actionTypes'
+import { ADD_USERNAME, INPUT_HANDLER, SELECT_USER, ADD_PASSWORD, SUBMIT_USER, DESELECT_USER } from './actionTypes'
 
-export const addUser = (user) => {
+export const addUsername = (username) => {
     return {
-        type: ADD_USER,
-        user: user
+        type: ADD_USERNAME,
+        username: username
+    }
+}
+export const addPassword = (password) => {
+    return {
+        type: ADD_PASSWORD,
+        password: password
+    }
+}
+export const selectUser = (key) => {
+    return {
+        type: SELECT_USER,
+        userID: key
+    }
+}
+export const submitUser = (username, password) => {
+    return {
+        type: SUBMIT_USER,
+        users: [...users, { username: username, password: password }]
+    }
+}
+export const deselectUser = () => {
+    return {
+        type: DESELECT_USER
+    }
+}
+export const inputHandler = (name) => (value) => {
+    return {
+        type: INPUT_HANDLER,
+        [name]: value
     }
 }
