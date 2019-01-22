@@ -6,43 +6,43 @@ import Header from './components/Header'
 import Landing from './components/Landing'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import Router from './Router'
+import { Scene, Router, Stack, Actions } from 'react-native-router-flux';
 
 export default class App extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         username: '',
-    //         password: '',
-    //         users: [],
-    //         email: '',
-    //         country: '',
-    //         selectedLogin: false,
-    //         selectedSignup: false,
-    //     }
-    // }
-    // inputHandler = (name) => (value) => {
-    //     this.setState({
-    //         [name]: value
-    //     })
-    // }
-    // submitHandler = () => {
-    //     if (this.state.selectedLogin === true) {
-    //         if (this.state.username === '' || this.state.password === '') {
-    //             return
-    //         }
-    //         this.setState({
-    //             users: [...this.state.users, { username: this.state.username, password: this.state.password },],
-    //         })
-    //     }
-    //     else if (this.state.selectedSignup === true) {
-    //         if (this.state.username === '' || this.state.password === '' || this.state.email === '' || this.state.country === '')
-    //             return
-    //     }
-    //     this.setState({
-    //         users: [...this.state.users, { username: this.state.username, password: this.state.password },],
-    //     })
-    // }
+    constructor() {
+        super();
+        this.state = {
+            username: '',
+            password: '',
+            users: [],
+            email: '',
+            country: '',
+            selectedLogin: false,
+            selectedSignup: false,
+        }
+    }
+    inputHandler = (name) => (value) => {
+        this.setState({
+            [name]: value
+        })
+    }
+    submitHandler = () => {
+        if (this.state.selectedLogin === true) {
+            if (this.state.username === '' || this.state.password === '') {
+                return
+            }
+            this.setState({
+                users: [...this.state.users, { username: this.state.username, password: this.state.password },],
+            })
+        }
+        else if (this.state.selectedSignup === true) {
+            if (this.state.username === '' || this.state.password === '' || this.state.email === '' || this.state.country === '')
+                return
+        }
+        this.setState({
+            users: [...this.state.users, { username: this.state.username, password: this.state.password },],
+        })
+    }
     // loginOptionHandler = (name) => () => {
     //     this.setState({
     //         [name]: true
@@ -71,7 +71,15 @@ export default class App extends React.Component {
         //     <ListItem key={i} i={i} users={user} />
         // ))
         return (
-            <Router />
+            <Router>
+                <Stack key="root">
+                    <Scene key="landing" component={Landing} loginOptionHandler={this.loginOptionHandler} signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} title='Packr Trackr' initial />
+                    <Scene renderBackButton={() => (null)}
+                        key="login" component={Login} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} title="Login" />
+                    <Scene renderBackButton={() => (null)}
+                        key="signup" component={Signup} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} title="Sign Up" />
+                </Stack>
+            </Router>
             // <View>
             //     <Header />
             //     <ImageBackground source={homeImage} style={styles.baseImage}>

@@ -3,17 +3,17 @@ import { Modal, View, TextInput, Button, StyleSheet, Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
 class Login extends React.Component {
-    state = {
-        username: '',
-        password: ''
-    }
+    // state = {
+    //     username: '',
+    //     password: ''
+    // }
 
-    inputHandler = (name) => (value) => {
-        console.log('Input Handler', name, 'value', value)
-        this.setState({
-            [name]: value
-        })
-    }
+    // inputHandler = (name) => (value) => {
+    //     console.log('Input Handler', name, 'value', value)
+    //     this.setState({
+    //         [name]: value
+    //     })
+    // }
     render() {
         return (
             <View>
@@ -21,7 +21,7 @@ class Login extends React.Component {
                     <View style={styles.inputContainer}>
                         <TextInput style={styles.loginInputs} onChangeText={this.props.inputHandler('username')}
                             placeholder='username' />
-                        <TextInput style={styles.loginInputs} onChangeText={this.inputHandler('password')}
+                        <TextInput style={styles.loginInputs} onChangeText={this.props.inputHandler('password')}
                             placeholder='password' />
                     </View>
                     <View>
