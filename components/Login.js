@@ -1,6 +1,7 @@
 import React from 'react'
 import { Modal, View, TextInput, Button, StyleSheet, Text } from 'react-native'
 
+
 const Login = (props) => {
     if (props.selectedLogin) {
         modalContent = (
@@ -15,7 +16,7 @@ const Login = (props) => {
     return (
         <Modal visible={props.selectedLogin === true} animationType='slide'>
             <View style={styles.header}>
-                <Text style={styles.headerText}>Packr Trackr</Text>
+                <Text style={styles.headerText}>Login</Text>
             </View>
             <View style={styles.modalContainer}>
                 {this.modalContent}

@@ -21,7 +21,7 @@ const Signup = (props) => {
     return (
         <Modal visible={props.selectedSignup === true} animationType='slide'>
             <View style={styles.header}>
-                <Text style={styles.headerText}>Packr Trackr</Text>
+                <Text style={styles.headerText}>Sign Up</Text>
             </View>
             <View style={styles.modalContainer}>
                 {this.modalContent}
