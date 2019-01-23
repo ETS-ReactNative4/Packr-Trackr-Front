@@ -30,7 +30,7 @@ export const deselectUser = () => {
         type: DESELECT_USER
     }
 }
-export const inputHandler = (name) => (value) => {
+export const inputHandler = (name, value) => {
     return {
         type: INPUT_HANDLER,
         [name]: value

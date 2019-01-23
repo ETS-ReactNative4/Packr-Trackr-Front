@@ -14,6 +14,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case INPUT_HANDLER:
+            console.log(action, 'action')
             return {
                 ...state,
                 [name]: action
@@ -36,7 +37,6 @@ const userReducer = (state = initialState, action) => {
                 })
             }
         case SUBMIT_USER:
-            console.log(action, 'action')
             return {
                 ...state,
                 users: [...state.users, { username: action.username, password: action.password }]
