@@ -1,22 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground } from 'react-native';
 import { connect } from 'react-redux'
-import ListItem from './components/ListItem'
-import homeImage from './assets/homeImage2.jpg'
-import Header from './components/Header'
-import Landing from './components/Landing'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import Main from './components/Main'
-import { addUsername, addPassword, submitUser, inputHandler, selectUser, deselectUser } from './components/store/actions/index'
-import { Provider } from 'react-redux'
-import configureStore from './components/store/configureStore'
-
-const store = configureStore()
+// import ListItem from './ListItem'
+import homeImage from '../assets/homeImage2.jpg'
+import Header from './Header'
+// import Landing from './Landing'
+// import Login from './Login'
+// import Signup from './Signup'
+import { addUsername, addPassword, submitUser, inputHandler, selectUser, deselectUser } from './store/actions/index'
 
 
 
-class App extends React.Component {
+
+class Main extends React.Component {
     constructor(props) {
         super(props);
         // this.state = {
@@ -84,18 +80,16 @@ class App extends React.Component {
         //     <ListItem key={i} i={i} users={user} />
         // ))
         return (
-            <Provider store={store}>
-                <Main />
-                {/* <View>
-                    <Header />
-                    <ImageBackground source={homeImage} style={styles.baseImage}>
+            <View>
+                <Header />
+                <ImageBackground source={homeImage} style={styles.baseImage}>
 
-                        <View style={styles.container}>
-                            <Landing loginOptionHandler={this.loginOptionHandler} signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} />
+                    <View style={styles.container}>
+                        {/* <Landing loginOptionHandler={this.loginOptionHandler} signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} />
                         <Login modalCloseHandler={this.modalCloseHandler} signupButtonClick={this.signupButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
                         <Signup modalCloseHandler={this.modalCloseHandler} loginButtonClick={this.loginButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
-                        <Text>{this.state.username}</Text>
-                            <View style={styles.inputContainer}>
+                        <Text>{this.state.username}</Text> */}
+                        {/* <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.inputHandler('username')}
                                 style={styles.inputField} value={this.state.username} placeholder='username' />
@@ -104,25 +98,24 @@ class App extends React.Component {
                             <TextInput
                                 onChangeText={this.inputHandler('password')}
                                 style={styles.inputField} value={this.state.password} placeholder='password' />
+                        </View> */}
+                        {/* <View style={styles.inputContainer}>
+                            <TextInput
+                                onChangeText={this.addUsernameInput('username')}
+                                style={styles.inputField} value={this.state.username} placeholder='username' />
                         </View>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    onChangeText={this.addUsernameInput('username')}
-                                    style={styles.inputField} value={this.state.username} placeholder='username' />
-                            </View>
-                            <View style={styles.inputContainer}>
-                                <TextInput
-                                    onChangeText={this.addPasswordInput('password')}
-                                    style={styles.inputField} value={this.state.password} placeholder='password' />
-                            </View>
-                            <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
-                            <ScrollView style={styles.scroller}>
-                                <View style={styles.userList}>{users}</View>
-                            </ScrollView>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                onChangeText={this.addPasswordInput('password')}
+                                style={styles.inputField} value={this.state.password} placeholder='password' />
                         </View>
-                    </ImageBackground>
-                </View > */}
-            </Provider>
+                        <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
+                        <ScrollView style={styles.scroller}>
+                            <View style={styles.userList}>{users}</View>
+                        </ScrollView> */}
+                    </View>
+                </ImageBackground>
+            </View >
         );
     }
 }
@@ -163,25 +156,24 @@ const styles = StyleSheet.create({
 
 });
 
-// const mapStateToProps = state => {
-//     return {
-//         username: state.users.username,
-//         password: state.users.password,
-//         selectedUser: state.users.selectedUser,
-//         users: state.users.users,
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        username: state.users.username,
+        password: state.users.password,
+        selectedUser: state.users.selectedUser,
+        users: state.users.users,
+    }
+}
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onAddUsername: (name) => dispatch(addUsername(name)),
-//         onAddPassword: (name) => dispatch(addPassword(name)),
-//         onAddUser: (username, password) => dispatch(submitUser(username, password)),
-//         onSelectUser: (key) => dispatch(selectUser(key)),
-//         onInputHandler: (name, value) => dispatch(inputHandler(name, value)),
-//         onDeselectUser: () => dispatch(deselectUser())
-//     }
-// }
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddUsername: (name) => dispatch(addUsername(name)),
+        onAddPassword: (name) => dispatch(addPassword(name)),
+        onAddUser: (username, password) => dispatch(submitUser(username, password)),
+        onSelectUser: (key) => dispatch(selectUser(key)),
+        onInputHandler: (name, value) => dispatch(inputHandler(name, value)),
+        onDeselectUser: () => dispatch(deselectUser())
+    }
+}
 
-export default App
-// connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

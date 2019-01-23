@@ -1,19 +1,20 @@
-import React from 'react'
-import { AppRegistry } from 'react-native'
-import { Provider } from 'react-redux'
-import configureStore from './components/store/configureStore'
-import App from './App'
+// import React from 'react'
+// import { AppRegistry } from 'react-native'
+// import { Provider } from 'react-redux'
+// import configureStore from './components/store/configureStore'
+// import App from './App'
 
-const store = configureStore()
+// const store = configureStore()
+// console.log('store', store)
 
-const RNRedux = () => (
-    <Provider store={store}>
-        <App />
-    </Provider>
+// const RNRedux = () => (
+//     <Provider store={store}>
+//         <App />
+//     </Provider>
 
-)
-
-
+// )
 
 
-AppRegistry.registerComponent('rncourse', () => RNRedux)
+
+
+// AppRegistry.registerComponent('rncourse', <RNRedux />)
