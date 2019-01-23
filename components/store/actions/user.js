@@ -18,10 +18,11 @@ export const selectUser = (key) => {
         userID: key
     }
 }
-export const submitUser = (user) => {
+export const submitUser = (username, password) => {
     return {
         type: SUBMIT_USER,
-        users: user
+        username: username,
+        password: password
     }
 }
 export const deselectUser = () => {

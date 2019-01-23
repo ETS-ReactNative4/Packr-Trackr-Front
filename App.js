@@ -5,7 +5,9 @@ import configureStore from './components/store/configureStore'
 
 const store = configureStore()
 
+
 class App extends React.Component {
+
     render() {
         return (
             <Provider store={store}>

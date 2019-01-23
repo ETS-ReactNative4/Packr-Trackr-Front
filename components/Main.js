@@ -13,18 +13,18 @@ import { addUsername, addPassword, submitUser, inputHandler, selectUser, deselec
 
 
 class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     username: '',
-        //     password: '',
-        //     users: [],
-        //     email: '',
-        //     country: '',
-        //     selectedLogin: false,
-        //     selectedSignup: false,
-        // }
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // this.state = {
+    //     //     username: '',
+    //     //     password: '',
+    //         // users: [],
+    //         // email: '',
+    //         // country: '',
+    //         // selectedLogin: false,
+    //         // selectedSignup: false,
+    //     // }
+    // }
     // inputHandler = (name) => (value) => {
     //     this.props.inputHandler(name, value)
     // }
@@ -50,21 +50,21 @@ class Main extends React.Component {
         if (this.props.username === '' || this.props.password === '') {
             return
         }
-        this.props.onAddUser(
-            user = {
-                username: this.props.username,
-                password: this.props.password
-            }
-        )
+
+        let username = this.props.username.username
+        let password = this.props.password.password
+
+        console.log('username', this.props.username.username, 'pw', this.props.password.password)
+        this.props.onAddUser(username, password)
 
     }
-    addUsernameInput = (value) => {
-        this.props.onAddUsername(value)
+    addUsernameInput = (username) => {
+        this.props.onAddUsername(username)
         console.log(this.props.username)
 
     }
-    addPasswordInput = (value) => {
-        this.props.onAddPassword(value)
+    addPasswordInput = (password) => {
+        this.props.onAddPassword(password)
         console.log(this.props.password)
     }
     // loginOptionHandler = (name) => () => {
@@ -91,15 +91,23 @@ class Main extends React.Component {
     // }
 
     render() {
+        console.log(this.props.users)
+        // const users = this.props.users.map((user, i) => {
+        //     console.log(user.username, 'USER!!!!', user)
+        //     //     < View >
+        //     //     <TouchableOpacity key={i} onPress={() => { alert('pressed ID: ' + i) }}>
+        //     //         <View style={styles.userList}>
+        //     //             <Text>{user.username}</Text>
+        //     //             <Text>{user.password}</Text>
+        //     //         </View>
+        //     //     </TouchableOpacity >
+        //     // </View >
+        // })
         const users = this.props.users.map((user, i) => (
-            <TouchableOpacity key={i} onPress={() => { alert('pressed ID: ' + i) }}>
-                <View style={styles.userList}>
-                    <Text>{user.username}</Text>
-                    <Text>{user.password}</Text>
-                </View>
-            </TouchableOpacity>
-            // <ListItem key={i} i={i} users={user} />
+            <ListItem key={i} i={i} users={user} />
         ))
+        console.log(users, 'USERS WHY U NO WORK')
+
         return (
             <View>
                 <Header />
@@ -121,12 +129,14 @@ class Main extends React.Component {
                         </View> */}
                         <View style={styles.inputContainer}>
                             <TextInput
-                                onChangeText={this.addUsernameInput('username')}
+                                onChangeText={this.addUsernameInput}
+                                // onChangeText={this.addUsernameInput('username')}
                                 style={styles.inputField} value={this.props.username} placeholder='username' />
                         </View>
                         <View style={styles.inputContainer}>
                             <TextInput
-                                onChangeText={this.addPasswordInput('password')}
+                                onChangeText={this.addPasswordInput}
+                                // onChangeText={this.addPasswordInput('password')}
                                 style={styles.inputField} value={this.props.password} placeholder='password' />
                         </View>
                         <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
@@ -172,7 +182,7 @@ const styles = StyleSheet.create({
     },
     baseImage: {
         height: '95%',
-    }
+    },
 
 });
 
@@ -187,9 +197,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddUsername: (name) => dispatch(addUsername(name)),
-        onAddPassword: (name) => dispatch(addPassword(name)),
-        onAddUser: (user) => dispatch(submitUser(user)),
+        onAddUsername: (username) => dispatch(addUsername(username)),
+        onAddPassword: (password) => dispatch(addPassword(password)),
+        onAddUser: (username, password) => dispatch(submitUser(username, password)),
         onSelectUser: (key) => dispatch(selectUser(key)),
         onInputHandler: (name, value) => dispatch(inputHandler(name, value)),
         onDeselectUser: () => dispatch(deselectUser())

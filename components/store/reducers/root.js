@@ -16,17 +16,17 @@ const userReducer = (state = initialState, action) => {
         case INPUT_HANDLER:
             return {
                 ...state,
-                [name]: action.value
+                [name]: action
             }
         case ADD_USERNAME:
             return {
                 ...state,
-                username: action.value
+                username: action
             }
         case ADD_PASSWORD:
             return {
                 ...state,
-                password: action.value
+                password: action
             }
         case SELECT_USER:
             return {
@@ -36,9 +36,10 @@ const userReducer = (state = initialState, action) => {
                 })
             }
         case SUBMIT_USER:
+            console.log(action, 'action')
             return {
                 ...state,
-                users: [...state.users, action.value]
+                users: [...state.users, { username: action.username, password: action.password }]
             }
         case DESELECT_USER:
             return {
