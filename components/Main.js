@@ -17,7 +17,7 @@ class Main extends React.Component {
                     <Scene renderBackButton={() => (null)}
                         key="signup" component={Signup} title="Sign Up" />
                     <Scene renderLeftButton={() => (null)}
-                        key="home" component={Home} title="Sign Up" />
+                        key="home" component={Home} title="Packr Trackr" />
                 </Stack>
             </Router>
         );

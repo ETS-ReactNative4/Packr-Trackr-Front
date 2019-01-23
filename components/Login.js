@@ -2,7 +2,7 @@ import React from 'react'
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
-import { addUsername, addPassword, submitUser, inputHandler, selectUser, deselectUser } from './store/actions/index'
+import { addUsername, addPassword, submitUser } from './store/actions/index'
 
 
 
@@ -12,7 +12,6 @@ class Login extends React.Component {
         if (this.props.username === '' || this.props.password === '') {
             return
         }
-
         let username = this.props.username.username
         let password = this.props.password.password
 
@@ -20,7 +19,6 @@ class Login extends React.Component {
         this.props.onAddUser(username, password)
 
     }
-
     addUsernameInput = (username) => {
         this.props.onAddUsername(username)
         console.log(this.props.username)
