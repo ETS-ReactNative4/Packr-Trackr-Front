@@ -1,4 +1,4 @@
-import { ADD_USERNAME, INPUT_HANDLER, ADD_PASSWORD, SELECT_USER, SUBMIT_USER, DESELECT_USER } from '../actions/actionTypes'
+import { ADD_USERNAME, INPUT_HANDLER, ADD_PASSWORD, SELECT_USER, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_COUNTRY, ADD_EMAIL } from '../actions/actionTypes'
 
 const initialState = {
     username: '',
@@ -6,6 +6,8 @@ const initialState = {
     users: [],
     email: '',
     country: '',
+    firstName: '',
+    lastName: '',
     selectedUser: {},
     selectedLogin: false,
     selectedSignup: false,
@@ -23,6 +25,26 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 username: action
+            }
+        case ADD_COUNTRY:
+            return {
+                ...state,
+                country: action
+            }
+        case ADD_EMAIL:
+            return {
+                ...state,
+                email: action
+            }
+        case ADD_FIRSTNAME:
+            return {
+                ...state,
+                firstName: action
+            }
+        case ADD_LASTNAME:
+            return {
+                ...state,
+                lastName: action
             }
         case ADD_PASSWORD:
             return {

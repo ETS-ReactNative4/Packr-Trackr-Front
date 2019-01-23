@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, Button, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
-import { Actions } from 'react-native-router-flux'
+// import { Actions } from 'react-native-router-flux'
 import homeImage from '../assets/homeImage2.jpg'
+
 
 const Landing = (props) => {
     return (
@@ -11,7 +12,7 @@ const Landing = (props) => {
                     <TouchableOpacity onPress={() => Actions.login()} style={styles.landingButton} >
                         <Button onPress={() => Actions.login()} color='white' title='Login' />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.login()} style={styles.landingButton}>
+                    <TouchableOpacity onPress={() => Actions.signup()} style={styles.landingButton}>
                         <Button onPress={() => Actions.signup()} color='white' title='Sign Up' />
                     </TouchableOpacity>
                 </View>
@@ -37,14 +38,6 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Landing
-
-
-
-// import React from 'react'
-// import { View, Button, StyleSheet } from 'react-native'
-
-// const Landing = (props) => {
 //     return (
 //         <View style={styles.landingScreen}>
 //             <View style={styles.landingButton} >
@@ -71,4 +64,4 @@ export default Landing
 //     }
 // })
 
-// export default Landing
+export default Landing

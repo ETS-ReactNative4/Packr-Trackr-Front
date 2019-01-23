@@ -1,1 +1,1 @@
-export { inputHandler, addUsername, addPassword, selectUser, submitUser, deselectUser } from './user'
+export { inputHandler, addUsername, addPassword, selectUser, submitUser, deselectUser, addFirstName, addLastName, addEmail, addCountry } from './user'
