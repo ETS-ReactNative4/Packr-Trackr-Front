@@ -38,7 +38,7 @@ const userReducer = (state = initialState, action) => {
         case SUBMIT_USER:
             return {
                 ...state,
-                users: [...users, { username: username, password: password }]
+                users: [...state.users, action.value]
             }
         case DESELECT_USER:
             return {

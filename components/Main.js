@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
-// import ListItem from './ListItem'
+import ListItem from './ListItem'
 import homeImage from '../assets/homeImage2.jpg'
 import Header from './Header'
 // import Landing from './Landing'
@@ -46,11 +46,26 @@ class Main extends React.Component {
     //     //     users: [...this.state.users, { username: this.state.username, password: this.state.password },],
     //     // })
     // }
+    submitHandler = () => {
+        if (this.props.username === '' || this.props.password === '') {
+            return
+        }
+        this.props.onAddUser(
+            user = {
+                username: this.props.username,
+                password: this.props.password
+            }
+        )
+
+    }
     addUsernameInput = (value) => {
         this.props.onAddUsername(value)
+        console.log(this.props.username)
+
     }
     addPasswordInput = (value) => {
         this.props.onAddPassword(value)
+        console.log(this.props.password)
     }
     // loginOptionHandler = (name) => () => {
     //     this.setState({
@@ -76,14 +91,19 @@ class Main extends React.Component {
     // }
 
     render() {
-        // const users = this.props.users.map((user, i) => (
-        //     <ListItem key={i} i={i} users={user} />
-        // ))
+        const users = this.props.users.map((user, i) => (
+            <TouchableOpacity key={i} onPress={() => { alert('pressed ID: ' + i) }}>
+                <View style={styles.userList}>
+                    <Text>{user.username}</Text>
+                    <Text>{user.password}</Text>
+                </View>
+            </TouchableOpacity>
+            // <ListItem key={i} i={i} users={user} />
+        ))
         return (
             <View>
                 <Header />
                 <ImageBackground source={homeImage} style={styles.baseImage}>
-
                     <View style={styles.container}>
                         {/* <Landing loginOptionHandler={this.loginOptionHandler} signupButtonClick={this.signupButtonClick} loginButtonClick={this.loginButtonClick} {...this.state} />
                         <Login modalCloseHandler={this.modalCloseHandler} signupButtonClick={this.signupButtonClick} inputHandler={this.inputHandler} submitHandler={this.submitHandler} {...this.state} />
@@ -99,20 +119,20 @@ class Main extends React.Component {
                                 onChangeText={this.inputHandler('password')}
                                 style={styles.inputField} value={this.state.password} placeholder='password' />
                         </View> */}
-                        {/* <View style={styles.inputContainer}>
+                        <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.addUsernameInput('username')}
-                                style={styles.inputField} value={this.state.username} placeholder='username' />
+                                style={styles.inputField} value={this.props.username} placeholder='username' />
                         </View>
                         <View style={styles.inputContainer}>
                             <TextInput
                                 onChangeText={this.addPasswordInput('password')}
-                                style={styles.inputField} value={this.state.password} placeholder='password' />
+                                style={styles.inputField} value={this.props.password} placeholder='password' />
                         </View>
                         <Button onPress={this.submitHandler} style={styles.placeButton} title='Add' />
                         <ScrollView style={styles.scroller}>
                             <View style={styles.userList}>{users}</View>
-                        </ScrollView> */}
+                        </ScrollView>
                     </View>
                 </ImageBackground>
             </View >
@@ -169,7 +189,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddUsername: (name) => dispatch(addUsername(name)),
         onAddPassword: (name) => dispatch(addPassword(name)),
-        onAddUser: (username, password) => dispatch(submitUser(username, password)),
+        onAddUser: (user) => dispatch(submitUser(user)),
         onSelectUser: (key) => dispatch(selectUser(key)),
         onInputHandler: (name, value) => dispatch(inputHandler(name, value)),
         onDeselectUser: () => dispatch(deselectUser())

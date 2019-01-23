@@ -18,10 +18,10 @@ export const selectUser = (key) => {
         userID: key
     }
 }
-export const submitUser = (username, password) => {
+export const submitUser = (user) => {
     return {
         type: SUBMIT_USER,
-        users: [...users, { username: username, password: password }]
+        users: user
     }
 }
 export const deselectUser = () => {
