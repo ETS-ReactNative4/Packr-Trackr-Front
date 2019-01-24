@@ -1,13 +1,10 @@
 import React from 'react'
-import { View, TextInput, Button, StyleSheet, Text, Image, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, Image, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
+import { SearchBar } from 'react-native-elements'
 import { connect } from 'react-redux'
-import homeImage from '../assets/PackrTrackrHomeImage'
+import homeImage from '../assets/PackrTrackrHomeImage.jpg'
 import myImage from '../assets/My_headershot.png'
-
-import { addUsername, addPassword, submitUser } from './store/actions/index'
-
-
 
 class UserFriends extends React.Component {
 
@@ -16,77 +13,143 @@ class UserFriends extends React.Component {
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
                     <View style={styles.movingFriendsContainer}>
+                        <SearchBar placeholder="Type Here..." lightTheme round />
                         <ScrollView>
                             <View style={styles.friendsContainer}>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.individualFriendBox}>
-                                    <Text>Name</Text>
-                                    <Text>Status</Text>
+                                    <Image style={styles.profileImage} source={myImage} />
+                                    <View style={styles.friendInfoContainer}>
+                                        <Text>Name</Text>
+                                        <Text>Status</Text>
+                                        <Text>Location</Text>
+                                    </View>
                                 </TouchableOpacity>
+
                             </View>
                         </ScrollView>
                     </View>
                 </ImageBackground>
-            </View>
+            </View >
         )
     }
 }
@@ -112,29 +175,23 @@ const styles = StyleSheet.create({
         width: '95%',
         borderRadius: 6,
         margin: 5,
+        flexDirection: 'row'
+    },
+    friendInfoContainer: {
+        flexDirection: 'column',
+        marginLeft: 18
     },
     baseImage: {
         height: '100%',
         alignItems: 'center'
+    },
+    profileImage: {
+        marginTop: 5,
+        height: 50,
+        width: 50,
+        borderRadius: 25
     }
 
 })
 
-// const mapStateToProps = state => {
-//     return {
-//         username: state.users.username,
-//         password: state.users.password,
-//         users: state.users.users,
-//     }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onAddUsername: (username) => dispatch(addUsername(username)),
-//         onAddPassword: (password) => dispatch(addPassword(password)),
-//         onAddUser: (username, password) => dispatch(submitUser(username, password)),
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Login)
 export default UserFriends

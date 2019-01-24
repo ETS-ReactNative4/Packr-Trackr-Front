@@ -1,16 +1,10 @@
 import React from 'react'
-import { View, TextInput, Button, StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import { connect } from 'react-redux'
-import homeImage from '../assets/PackrTrackrHomeImage'
+import homeImage from '../assets/PackrTrackrHomeImage.jpg'
 import myImage from '../assets/My_headershot.png'
 
-import { addUsername, addPassword, submitUser } from './store/actions/index'
-
-
-
 class Profile extends React.Component {
-
     render() {
         return (
             <View>
@@ -86,7 +80,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     profileContainer: {
-        // flex: 1,
         marginTop: 5,
         flexDirection: 'column',
         justifyContent: 'flex-start',
@@ -105,21 +98,4 @@ const styles = StyleSheet.create({
 
 })
 
-// const mapStateToProps = state => {
-//     return {
-//         username: state.users.username,
-//         password: state.users.password,
-//         users: state.users.users,
-//     }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onAddUsername: (username) => dispatch(addUsername(username)),
-//         onAddPassword: (password) => dispatch(addPassword(password)),
-//         onAddUser: (username, password) => dispatch(submitUser(username, password)),
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Login)
 export default Profile

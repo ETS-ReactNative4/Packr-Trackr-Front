@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Button, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import homeImage from '../assets/PackrTrackrHomeImage'
+import homeImage from '../assets/PackrTrackrHomeImage.jpg'
 
 const Landing = (props) => {
     return (
@@ -9,10 +9,10 @@ const Landing = (props) => {
             <ImageBackground source={homeImage} style={styles.baseImage}>
                 <View style={styles.landingScreen}>
                     <TouchableOpacity onPress={() => Actions.login()} style={styles.landingButton} >
-                        <Button onPress={() => Actions.login()} color='white' title='Login' />
+                        <Text style={styles.landingButtonText} onPress={() => Actions.login()} title='Login'>Login</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => Actions.login()} style={styles.landingButton}>
-                        <Button onPress={() => Actions.signup()} color='white' title='Sign Up' />
+                        <Text style={styles.landingButtonText} onPress={() => Actions.signup()} title='Sign Up'>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -23,14 +23,23 @@ const Landing = (props) => {
 const styles = StyleSheet.create({
     landingButton: {
         flexDirection: 'row',
-        minWidth: 100,
+        width: 150,
+        height: 50,
         backgroundColor: '#0098F7',
         margin: 15,
         borderRadius: 10,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    landingButtonText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold'
     },
     landingScreen: {
-        marginTop: 200
+        marginTop: 200,
+        width: '100%',
+        alignItems: 'center'
     },
     baseImage: {
         height: '100%',

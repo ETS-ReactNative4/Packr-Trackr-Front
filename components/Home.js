@@ -1,14 +1,9 @@
 import React from 'react'
-import { View, TextInput, Button, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import { connect } from 'react-redux'
-import homeImage from '../assets/PackrTrackrHomeImage'
-import { addUsername, addPassword, submitUser } from './store/actions/index'
-
-
+import homeImage from '../assets/PackrTrackrHomeImage.jpg'
 
 class Home extends React.Component {
-
     render() {
         return (
             <View>
@@ -87,21 +82,4 @@ const styles = StyleSheet.create({
 
 })
 
-// const mapStateToProps = state => {
-//     return {
-//         username: state.users.username,
-//         password: state.users.password,
-//         users: state.users.users,
-//     }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onAddUsername: (username) => dispatch(addUsername(username)),
-//         onAddPassword: (password) => dispatch(addPassword(password)),
-//         onAddUser: (username, password) => dispatch(submitUser(username, password)),
-//     }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Login)
 export default Home
