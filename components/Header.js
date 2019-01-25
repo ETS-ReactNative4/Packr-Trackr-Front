@@ -1,6 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
+// TO BE REMOVED.... I THINK ============================================================
+//==============================================================
+//============================================================
 const Header = () => {
     return (
         <View style={styles.header}>

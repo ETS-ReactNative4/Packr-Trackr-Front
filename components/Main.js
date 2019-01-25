@@ -4,6 +4,7 @@ import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
 import Profile from './Profile'
+import EditProfile from './EditProfile'
 import UserFriends from './UserFriends'
 import { Scene, Router, Stack } from 'react-native-router-flux';
 
@@ -24,6 +25,9 @@ class Main extends React.Component {
                         key="profile" component={Profile} title="My Profile" />
                     <Scene renderBackButton={() => (null)}
                         key="friends" component={UserFriends} title="Friends" />
+                    <Scene renderBackButton={() => (null)}
+                        key="editProfile" component={EditProfile} title="Edit Profile" />
+
                 </Stack>
             </Router>
         );

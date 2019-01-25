@@ -10,7 +10,7 @@ class Profile extends React.Component {
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
                     <View style={styles.movingEditButton}>
-                        <TouchableOpacity style={styles.editProfileButton}>
+                        <TouchableOpacity onPress={() => Actions.editProfile()} style={styles.editProfileButton}>
                             <Text>Edit Profile</Text>
                         </TouchableOpacity>
                     </View>

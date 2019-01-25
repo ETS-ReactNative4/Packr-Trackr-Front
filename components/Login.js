@@ -3,6 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { addUsername, addPassword, submitUser } from './store/actions/index'
+import { Input } from 'react-native-elements'
 
 
 
@@ -28,14 +29,20 @@ class Login extends React.Component {
         this.props.onAddPassword(password)
         console.log(this.props.password)
     }
+    addEmailInput = (email) => {
+        this.props.onAddEmail(email)
+        console.log(this.props.email)
+    }
     render() {
         console.log('users', this.props.users)
         return (
             <View>
                 <View style={styles.modalContainer}>
                     <View style={styles.inputContainer}>
-                        <TextInput style={styles.loginInputs} onChangeText={this.addUsernameInput}
-                            value={this.props.username} placeholder='Username' />
+                        {/* <Input placeholder='Email' leftIcon={{ type: 'font-awesome', name: 'envelope' }} />
+                        <Input placeholder='Password' leftIcon={{ type: 'font-awesome', name: 'lock' }} /> */}
+                        <TextInput style={styles.loginInputs} onChangeText={this.addEmailInput}
+                            value={this.props.email} placeholder='Email' />
                         <TextInput style={styles.loginInputs} onChangeText={this.addPasswordInput}
                             value={this.props.password} placeholder='Password' />
                     </View>
@@ -74,6 +81,7 @@ const mapStateToProps = state => {
         username: state.users.username,
         password: state.users.password,
         users: state.users.users,
+        email: state.users.email
     }
 }
 
@@ -82,6 +90,7 @@ const mapDispatchToProps = dispatch => {
         onAddUsername: (username) => dispatch(addUsername(username)),
         onAddPassword: (password) => dispatch(addPassword(password)),
         onAddUser: (username, password) => dispatch(submitUser(username, password)),
+        onAddEmail: (email) => dispatch(addEmail(email)),
     }
 }
 
