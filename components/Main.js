@@ -7,6 +7,9 @@ import Profile from './Profile'
 import EditProfile from './EditProfile'
 import UserFriends from './UserFriends'
 import { Scene, Router, Stack } from 'react-native-router-flux';
+//https://packr-trackr-db.herokuapp.com/users
+//DEPLOYED URL
+//https://packr-trackr-db.herokuapp.com/ 
 
 
 class Main extends React.Component {

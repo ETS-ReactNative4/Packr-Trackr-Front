@@ -1,6 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
+// TO BE REMOVED ============================================================
+//==============================================================
+//============================================================
+
+
 const ListItem = (props) => {
     return (
         <TouchableOpacity onPress={() => { alert('pressed ID: ' + props.i) }}>
