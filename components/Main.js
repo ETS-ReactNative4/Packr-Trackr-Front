@@ -7,12 +7,32 @@ import Profile from './Profile'
 import EditProfile from './EditProfile'
 import UserFriends from './UserFriends'
 import { Scene, Router, Stack } from 'react-native-router-flux';
+import { addHostels } from './store/actions';
 //https://packr-trackr-db.herokuapp.com/users
 //DEPLOYED URL
 //https://packr-trackr-db.herokuapp.com/ 
 
+// addUsernameInput = (username) => {
+//     this.props.onAddUsername(username)
+//     console.log(this.props.username)
+
+// }
+// addInitialHostels = (hostels)
+
+
 
 class Main extends React.Component {
+    componentDidMount() {
+        this.loadHostels()
+    }
+    loadHostels = () => {
+        fetch('https://packr-trackr-db.herokuapp.com/hostels')
+            .then(result => result.json())
+            .then((response) => {
+                this.props.onAddHostels(response)
+            })
+    }
+
     render() {
         return (
             <Router>
@@ -37,4 +57,18 @@ class Main extends React.Component {
     }
 }
 
-export default Main
+const mapStateToProps = state => {
+    return {
+        hosteList: state.users.hosteList
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddHostels: (hostels) => dispatch(addHostels(hostels))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
+
+// export default Main

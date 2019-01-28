@@ -11,15 +11,21 @@ const initialState = {
     selectedUser: {},
     selectedLogin: false,
     selectedSignup: false,
+    hostelList: []
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case INPUT_HANDLER:
-            console.log(action, 'action')
             return {
                 ...state,
                 [name]: action
+            }
+        case ADD_HOSTELS:
+            console.log(action, 'hostelAdding')
+            return {
+                ...state,
+                hostelList: action
             }
         case ADD_USERNAME:
             return {

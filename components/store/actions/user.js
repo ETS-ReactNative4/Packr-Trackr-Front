@@ -6,6 +6,12 @@ export const addUsername = (username) => {
         username: username
     }
 }
+export const addHostels = (hostels) => {
+    return {
+        type: ADD_HOSTELS,
+        hostelList: hostels
+    }
+}
 export const addEmail = (email) => {
     return {
         type: ADD_EMAIL,
