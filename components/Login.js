@@ -1,10 +1,9 @@
 import React from 'react'
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native'
+import { View, TextInput, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
-import { addUsername, addPassword, submitUser } from './store/actions/index'
-import { Input } from 'react-native-elements'
-
+import { addUsername, addPassword, submitUser, addEmail } from './store/actions/index'
+import homeImage from '../assets/prism.png'
 
 
 class Login extends React.Component {
@@ -34,46 +33,96 @@ class Login extends React.Component {
         console.log(this.props.email)
     }
     render() {
-        console.log('users', this.props.users)
         return (
-            <View>
-                <View style={styles.modalContainer}>
+            <ImageBackground source={homeImage} style={styles.baseImage}>
+                <View style={styles.mainContainer}>
                     <View style={styles.inputContainer}>
-                        {/* <Input placeholder='Email' leftIcon={{ type: 'font-awesome', name: 'envelope' }} />
-                        <Input placeholder='Password' leftIcon={{ type: 'font-awesome', name: 'lock' }} /> */}
                         <TextInput style={styles.loginInputs} onChangeText={this.addEmailInput}
-                            value={this.props.email} placeholder='Email' />
+                            placeholder='Email' />
                         <TextInput style={styles.loginInputs} onChangeText={this.addPasswordInput}
-                            value={this.props.password} placeholder='Password' />
-                    </View>
-                    <View>
-                        <Button onPress={this.submitHandler} title='Submit' />
-                        <Button onPress={() => Actions.signup()} title='Not A User?' />
-                        <Button onPress={() => Actions.home()} color='red' title='Next' />
+                            placeholder='Password' />
+                        <View style={styles.buttonMoving}>
+                            <TouchableOpacity onPress={() => Actions.home()} style={styles.landingButton}>
+                                <Text style={styles.landingButtonText} onPress={() => Actions.home()}>Submit</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.signup()} style={styles.landingButton}>
+                                <Text style={styles.landingButtonText} onPress={() => Actions.signup()}>Not A User?</Text>
+                            </TouchableOpacity>
+                            {/* <Button onPress={this.submitHandler} title='Submit' />
+                            <Button onPress={() => Actions.signup()} title='Not A User?' />
+                            <Button onPress={() => Actions.home()} color='red' title='Next' /> */}
+                        </View>
                     </View>
                 </View>
-            </View>
+            </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    modalContainer: {
-        marginTop: 40,
+    mainContainer: {
+        paddingTop: 3,
+        width: '100%',
+        alignItems: 'center',
+        backgroundColor: 'rgba(250, 250, 250, 0.02)',
+        height: '100%',
     },
     inputContainer: {
-        paddingLeft: 20,
-        width: '100%',
+        marginTop: 20,
+        width: '90%',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: 50,
+        paddingBottom: 30,
+        backgroundColor: 'rgba(128, 128, 128, 0.96)',
+        // borderColor: 'black',
+        // borderWidth: 1,
+        borderRadius: 10,
+        shadowColor: '#EB7F2E',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.9,
+        shadowRadius: 2,
+        elevation: 1,
+    },
+    buttonMoving: {
+        marginTop: 60
     },
     loginInputs: {
         width: '80%',
         borderColor: 'black',
         borderWidth: 1,
         marginBottom: 10,
-        borderRadius: 3
+        borderRadius: 3,
+        height: 40,
+        backgroundColor: 'white'
     },
+    landingButton: {
+        flexDirection: 'row',
+        width: 150,
+        height: 50,
+        backgroundColor: '#EB7F2E',
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.9,
+        shadowRadius: 2,
+        elevation: 1,
+    },
+    logo: {
+        width: 300,
+        height: 91,
+    },
+    landingButtonText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    baseImage: {
+        height: '100%',
+    }
 })
 
 const mapStateToProps = state => {
@@ -81,7 +130,8 @@ const mapStateToProps = state => {
         username: state.users.username,
         password: state.users.password,
         users: state.users.users,
-        email: state.users.email
+        email: state.users.email,
+        selectedHostel: state.users.selectedHostel
     }
 }
 

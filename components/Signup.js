@@ -1,8 +1,9 @@
 import React from 'react'
-import { Modal, View, TextInput, Button, StyleSheet, Text } from 'react-native'
+import { View, TextInput, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
-import { addUsername, addPassword, submitUser, inputHandler, selectUser, deselectUser, addFirstName, addLastName } from './store/actions/index'
+import homeImage from '../assets/prism.png'
+import { addUsername, addPassword, submitUser, addFirstName, addLastName, addEmail } from './store/actions/index'
 
 // import React from 'react'
 // import { Modal, View, TextInput, Button, StyleSheet, Text } from 'react-native'
@@ -54,50 +55,95 @@ class Signup extends React.Component {
     }
     render() {
         return (
-            <View style={styles.modalContainer} >
-                <View style={styles.inputContainer}>
-                    <TextInput style={styles.signUpInputs} onChangeText={this.addFirstNameInput}
-                        placeholder='First Name' value={this.props.firstName} />
-                    <TextInput style={styles.signUpInputs} onChangeText={this.addLastNameInput}
-                        placeholder='Last Name' value={this.props.lastName} />
-                    <TextInput style={styles.signUpInputs} onChangeText={this.addCountryInput}
-                        placeholder='Country' value={this.props.country} />
-                    <TextInput style={styles.signUpInputs} onChangeText={this.addUsernameInput}
-                        placeholder='Username' value={this.props.username} />
-                    <TextInput style={styles.signUpInputs} onChangeText={this.addEmailInput}
-                        placeholder='Email' value={this.props.email} />
-                    <TextInput style={styles.signUpInputs} onChangeText={this.addPasswordInput}
-                        placeholder='Password' value={this.props.password} />
+            <ImageBackground source={homeImage} style={styles.baseImage}>
+                <View style={styles.mainContainer}>
+                    <View style={styles.inputContainer}>
+                        <TextInput style={styles.signUpInputs} onChangeText={this.addFirstNameInput}
+                            placeholder='First Name' />
+                        <TextInput style={styles.signUpInputs} onChangeText={this.addLastNameInput}
+                            placeholder='Last Name' />
+                        <TextInput style={styles.signUpInputs} placeholder='Country' />
+                        <TextInput style={styles.signUpInputs} onChangeText={this.addEmailInput}
+                            placeholder='Email' />
+                        <TextInput style={styles.signUpInputs} onChangeText={this.addPasswordInput}
+                            placeholder='Password' />
+                        <View style={styles.buttonMoving}>
+                            <TouchableOpacity onPress={() => Actions.home()} style={styles.landingButton}>
+                                <Text style={styles.landingButtonText} onPress={() => Actions.home()}>Submit</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => Actions.login()} style={styles.landingButton}>
+                                <Text style={styles.landingButtonText} onPress={() => Actions.login()}>Existing User?</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
-                <View>
-                    <Button title='Submit' onPress={this.submitHandler} />
-                    <Button onPress={() => Actions.login()} title='Existing User?' />
-                    <Button onPress={() => Actions.home()} color='red' title='Next' />
-
-                </View>
-            </View>
+            </ImageBackground>
         )
     }
 }
 const styles = StyleSheet.create({
-    modalContainer: {
-        paddingTop: 40,
+    mainContainer: {
+        paddingTop: 10,
+        width: '100%',
         alignItems: 'center',
+        backgroundColor: 'rgba(250, 250, 250, 0.02)',
+        height: '100%',
     },
     inputContainer: {
-        paddingLeft: 20,
-        width: '100%',
+        marginTop: 20,
+        width: '90%',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: 20,
+        paddingBottom: 30,
+        backgroundColor: 'rgba(128, 128, 128, 0.96)',
+        borderColor: 'black',
+        borderRadius: 10,
+        shadowColor: '#EB7F2E',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+    },
+    buttonMoving: {
+        marginTop: 30
     },
     signUpInputs: {
         width: '80%',
         borderColor: 'black',
         borderWidth: 1,
         marginBottom: 10,
-        borderRadius: 3
-
+        borderRadius: 3,
+        height: 28,
+        backgroundColor: 'white'
     },
+    landingButton: {
+        flexDirection: 'row',
+        width: 150,
+        height: 50,
+        backgroundColor: '#EB7F2E',
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.9,
+        shadowRadius: 2,
+        elevation: 1,
+    },
+    logo: {
+        width: 300,
+        height: 91,
+    },
+    landingButtonText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    baseImage: {
+        height: '100%',
+    }
 })
 
 const mapStateToProps = state => {

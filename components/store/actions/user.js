@@ -1,4 +1,4 @@
-import { ADD_USERNAME, INPUT_HANDLER, SELECT_USER, ADD_PASSWORD, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_EMAIL, ADD_COUNTRY } from './actionTypes'
+import { ADD_USERNAME, INPUT_HANDLER, SELECT_HOSTEL, ADD_PASSWORD, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_EMAIL, ADD_COUNTRY, ADD_HOSTELS } from './actionTypes'
 
 export const addUsername = (username) => {
     return {
@@ -42,10 +42,10 @@ export const addPassword = (password) => {
         password: password
     }
 }
-export const selectUser = (key) => {
+export const selectHostel = (key) => {
     return {
-        type: SELECT_USER,
-        userID: key
+        type: SELECT_HOSTEL,
+        key
     }
 }
 export const submitUser = (username, password) => {

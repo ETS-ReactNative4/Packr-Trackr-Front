@@ -1,4 +1,4 @@
-import { ADD_USERNAME, INPUT_HANDLER, ADD_PASSWORD, SELECT_USER, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_COUNTRY, ADD_EMAIL } from '../actions/actionTypes'
+import { ADD_USERNAME, INPUT_HANDLER, ADD_PASSWORD, SELECT_HOSTEL, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_COUNTRY, ADD_EMAIL, ADD_HOSTELS } from '../actions/actionTypes'
 
 const initialState = {
     username: '',
@@ -8,10 +8,24 @@ const initialState = {
     country: '',
     firstName: '',
     lastName: '',
-    selectedUser: {},
+    selectedHostel: {},
     selectedLogin: false,
     selectedSignup: false,
-    hostelList: []
+    hostelList: [],
+    currentUser: {
+        id: 1,
+        first_name: "Dane",
+        last_name: "Parke",
+        email: "dane.parke@colorado.edu",
+        password: "password",
+        country: "Australia",
+        admin: true,
+        profile_image: "http://daneparke-portfolio.surge.sh/Professional_headshot.png",
+        about_me: "I am a Colorado Native who is excited to travel, meet new people, and experience new cultures!",
+        travel_status: true,
+        checkin_status: false,
+        whats_app_number: "19708193277"
+    }
 }
 
 const userReducer = (state = initialState, action) => {
@@ -57,11 +71,12 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 password: action
             }
-        case SELECT_USER:
+        case SELECT_HOSTEL:
+            console.log(action, 'SELECTED HOSTEL')
             return {
                 ...state,
-                selectedUser: state.users.find(user => {
-                    return user.id === action.userID
+                selectedHostel: state.hostelList.hostelList.find(hostel => {
+                    return hostel.id === action.key
                 })
             }
         case SUBMIT_USER:

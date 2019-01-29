@@ -6,8 +6,13 @@ import Home from './Home'
 import Profile from './Profile'
 import EditProfile from './EditProfile'
 import UserFriends from './UserFriends'
-import { Scene, Router, Stack } from 'react-native-router-flux';
-import { addHostels } from './store/actions';
+import SideMenu from './SideMenu'
+import CheckinIndividualHostel from './CheckinIndividualHostel'
+import CheckinListOfHostelsNearby from './CheckinListOfHostelsNearby'
+import { Scene, Router, Stack, Drawer } from 'react-native-router-flux';
+import { addHostels } from './store/actions/index';
+import { connect } from 'react-redux'
+
 //https://packr-trackr-db.herokuapp.com/users
 //DEPLOYED URL
 //https://packr-trackr-db.herokuapp.com/ 
@@ -37,7 +42,7 @@ class Main extends React.Component {
         return (
             <Router>
                 <Stack key="root">
-                    <Scene key="landing" component={Landing} title='Packr Trackr' initial />
+                    <Scene key="landing" component={Landing} title='Welcome' initial />
                     <Scene renderBackButton={() => (null)}
                         key="login" component={Login} title="Login" />
                     <Scene renderBackButton={() => (null)}
@@ -46,11 +51,21 @@ class Main extends React.Component {
                         key="home" component={Home} title="Packr Trackr" />
                     <Scene renderBackButton={() => (null)}
                         key="profile" component={Profile} title="My Profile" />
+                    {/* <Drawer
+                        hideNavBar
+                        key="sidemenu"
+                        contentComponent={SideMenu}
+                        drawerWidth={250}
+                        drawerPosition="right"
+                    /> */}
                     <Scene renderBackButton={() => (null)}
                         key="friends" component={UserFriends} title="Friends" />
                     <Scene renderBackButton={() => (null)}
                         key="editProfile" component={EditProfile} title="Edit Profile" />
-
+                    <Scene renderBackButton={() => (null)}
+                        key="nearbyHostels" component={CheckinListOfHostelsNearby} title="Hostels Nearby" />
+                    <Scene renderBackButton={() => (null)}
+                        key="individualHostel" component={CheckinIndividualHostel} title="Confirm" />
                 </Stack>
             </Router>
         );
@@ -59,7 +74,7 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        hosteList: state.users.hosteList
+        hostelList: state.users.hostelList
     }
 }
 
@@ -71,4 +86,4 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)
 
-// export default Main
+        // export default Main
