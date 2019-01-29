@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { addUsername, addPassword, submitUser, addEmail } from './store/actions/index'
 import homeImage from '../assets/prism.png'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 
 class Login extends React.Component {
@@ -35,7 +36,10 @@ class Login extends React.Component {
     render() {
         return (
             <ImageBackground source={homeImage} style={styles.baseImage}>
-                <View style={styles.mainContainer}>
+                <KeyboardAwareScrollView contentContainerStyle={styles.mainContainer}
+                    resetScrollToCoords={{ x: 0, y: 0 }}
+                    scrollEnabled={true}>
+                    {/* <View style={styles.mainContainer}> */}
                     <View style={styles.inputContainer}>
                         <TextInput style={styles.loginInputs} onChangeText={this.addEmailInput}
                             placeholder='Email' />
@@ -53,7 +57,8 @@ class Login extends React.Component {
                             <Button onPress={() => Actions.home()} color='red' title='Next' /> */}
                         </View>
                     </View>
-                </View>
+                    {/* </View> */}
+                </KeyboardAwareScrollView>
             </ImageBackground>
         )
     }

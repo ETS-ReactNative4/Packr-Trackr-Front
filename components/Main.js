@@ -6,12 +6,15 @@ import Home from './Home'
 import Profile from './Profile'
 import EditProfile from './EditProfile'
 import UserFriends from './UserFriends'
-import SideMenu from './SideMenu'
+import CheckedinHostelHome from './CheckedinHostelHome'
 import CheckinIndividualHostel from './CheckinIndividualHostel'
 import CheckinListOfHostelsNearby from './CheckinListOfHostelsNearby'
+import HostelMessageBoard from './HostelMessageBoard'
+import HostelMessagePost from './HostelMessagePost'
 import { Scene, Router, Stack, Drawer } from 'react-native-router-flux';
 import { addHostels } from './store/actions/index';
 import { connect } from 'react-redux'
+import HostelStayers from './HostelStayers';
 
 //https://packr-trackr-db.herokuapp.com/users
 //DEPLOYED URL
@@ -51,13 +54,14 @@ class Main extends React.Component {
                         key="home" component={Home} title="Packr Trackr" />
                     <Scene renderBackButton={() => (null)}
                         key="profile" component={Profile} title="My Profile" />
-                    {/* <Drawer
-                        hideNavBar
-                        key="sidemenu"
-                        contentComponent={SideMenu}
-                        drawerWidth={250}
-                        drawerPosition="right"
-                    /> */}
+                    <Scene renderLeftButton={() => (null)}
+                        key="checkedin" component={CheckedinHostelHome} title="Packr Trackr" />
+                    <Scene renderBackButton={() => (null)}
+                        key="messageBoard" component={HostelMessageBoard} title="Message Board" />
+                    <Scene renderBackButton={() => (null)}
+                        key="messagePost" component={HostelMessagePost} title="New Message" />
+                    <Scene renderBackButton={() => (null)}
+                        key="hostelStayers" component={HostelStayers} title="Find A Friend" />
                     <Scene renderBackButton={() => (null)}
                         key="friends" component={UserFriends} title="Friends" />
                     <Scene renderBackButton={() => (null)}

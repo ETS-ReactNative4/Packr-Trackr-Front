@@ -3,6 +3,7 @@ import { View, TextInput, ImageBackground, StyleSheet, Text, TouchableOpacity } 
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 import homeImage from '../assets/prism.png'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { addUsername, addPassword, submitUser, addFirstName, addLastName, addEmail } from './store/actions/index'
 
 // import React from 'react'
@@ -56,7 +57,10 @@ class Signup extends React.Component {
     render() {
         return (
             <ImageBackground source={homeImage} style={styles.baseImage}>
-                <View style={styles.mainContainer}>
+                <KeyboardAwareScrollView contentContainerStyle={styles.mainContainer}
+                    resetScrollToCoords={{ x: 0, y: 0 }}
+                    scrollEnabled={true}>
+                    {/* <View style={styles.mainContainer}> */}
                     <View style={styles.inputContainer}>
                         <TextInput style={styles.signUpInputs} onChangeText={this.addFirstNameInput}
                             placeholder='First Name' />
@@ -76,7 +80,8 @@ class Signup extends React.Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                </View>
+                    {/* </View> */}
+                </KeyboardAwareScrollView>
             </ImageBackground>
         )
     }

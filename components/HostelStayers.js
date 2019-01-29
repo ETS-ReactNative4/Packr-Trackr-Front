@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import homeImage from '../assets/prism.png'
 import myImage from '../assets/My_headershot.png'
 
-class UserFriends extends React.Component {
+class HostelStayers extends React.Component {
 
     render() {
         return (
@@ -203,4 +203,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default UserFriends
+export default HostelStayers

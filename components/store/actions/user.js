@@ -1,4 +1,4 @@
-import { ADD_USERNAME, INPUT_HANDLER, SELECT_HOSTEL, ADD_PASSWORD, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_EMAIL, ADD_COUNTRY, ADD_HOSTELS } from './actionTypes'
+import { ADD_HOSTELMESSAGES, ADD_USERNAME, INPUT_HANDLER, SELECT_HOSTEL, ADD_PASSWORD, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_EMAIL, ADD_COUNTRY, ADD_HOSTELS } from './actionTypes'
 
 export const addUsername = (username) => {
     return {
@@ -10,6 +10,12 @@ export const addHostels = (hostels) => {
     return {
         type: ADD_HOSTELS,
         hostelList: hostels
+    }
+}
+export const addHostelMessages = (messages) => {
+    return {
+        type: ADD_HOSTELMESSAGES,
+        hostelMessages: messages
     }
 }
 export const addEmail = (email) => {

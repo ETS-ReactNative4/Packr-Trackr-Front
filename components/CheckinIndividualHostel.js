@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import homeImage from '../assets/prism.png'
@@ -18,7 +18,7 @@ class CheckinIndividualHostel extends React.Component {
                             <Text style={styles.hostelName}>{this.props.selectedHostel.name}</Text>
                         </TouchableOpacity>
                         <View style={styles.movingCheckinButton}>
-                            <TouchableOpacity onPress={() => Actions.nearbyHostels()} style={styles.checkinButton}>
+                            <TouchableOpacity onPress={() => Actions.checkedin()} style={styles.checkinButton}>
                                 <Text style={styles.checkinButtonText}>Check-In</Text>
                             </TouchableOpacity>
                         </View>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     movingCheckinButton: {
-        marginTop: 55,
+        marginTop: 25,
         justifyContent: 'center',
         alignItems: 'center'
     },

@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 
 class Home extends React.Component {
     render() {
-        console.log(this.props.currentUser, 'CURRENTUSER')
         return (
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
@@ -79,7 +78,8 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 100
+        marginTop: 100,
+        marginLeft: 20
     },
     movingButtons: {
         marginTop: -367
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     movingCheckinButton: {
-        marginTop: 300,
+        marginTop: 270,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     // },
     lighterBG: {
         backgroundColor: 'rgba(250, 250, 250, 0.02)',
-        // height: '100%'
+        height: '100%'
     }
 
 

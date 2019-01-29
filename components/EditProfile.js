@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image, ImageBackground, TouchableOpacity, TextInput } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import homeImage from '../assets/PackrTrackrHomeImage.jpg'
+import homeImage from '../assets/prism.png'
 import myImage from '../assets/My_headershot.png'
 
 class Profile extends React.Component {
