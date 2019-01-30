@@ -15,6 +15,8 @@ import { Scene, Router, Stack, Drawer } from 'react-native-router-flux';
 import { addHostels } from './store/actions/index';
 import { connect } from 'react-redux'
 import HostelStayers from './HostelStayers';
+import { Actions } from 'react-native-router-flux'
+
 
 //https://packr-trackr-db.herokuapp.com/users
 //DEPLOYED URL
@@ -40,12 +42,13 @@ class Main extends React.Component {
                 this.props.onAddHostels(response)
             })
     }
-
     render() {
         return (
             <Router>
                 <Stack key="root">
-                    <Scene key="landing" component={Landing} title='Welcome' initial />
+                    <Scene key="landing"
+                        // hideNavBar={true} 
+                        component={Landing} title='Welcome' initial />
                     <Scene renderBackButton={() => (null)}
                         key="login" component={Login} title="Login" />
                     <Scene renderBackButton={() => (null)}
@@ -56,7 +59,7 @@ class Main extends React.Component {
                         key="profile" component={Profile} title="My Profile" />
                     <Scene renderLeftButton={() => (null)}
                         key="checkedin" component={CheckedinHostelHome} title="Packr Trackr" />
-                    <Scene renderBackButton={() => (null)}
+                    <Scene renderBackButton={() => (null)} onBack={() => Actions.checkedin()}
                         key="messageBoard" component={HostelMessageBoard} title="Message Board" />
                     <Scene renderBackButton={() => (null)}
                         key="messagePost" component={HostelMessagePost} title="New Message" />

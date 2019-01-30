@@ -40,7 +40,7 @@ class HostelMessageBoard extends React.Component {
                         <View style={styles.boardHeader}>
                             <View>
                                 <TouchableOpacity onPress={() => Actions.messagePost()} style={styles.checkinButton}>
-                                    <Text style={styles.checkinButtonStyles}>Compose Message</Text>
+                                    <Text style={styles.checkinButtonStyles}>New Post</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.movingLogo}>
@@ -93,14 +93,16 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.9,
         shadowRadius: 2,
         elevation: 1,
-        height: 70,
+        height: 40,
         width: 160,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 76
+        marginLeft: 76,
+        marginTop: 20
     },
     checkinButtonStyles: {
-        fontSize: 20,
+        fontWeight: 'bold',
+        fontSize: 18,
     },
     baseImage: {
         height: '100%',

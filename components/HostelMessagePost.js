@@ -72,7 +72,7 @@ class HostelMessagePost extends React.Component {
                     </View>
                     <View style={styles.movingPostButton}>
                         <TouchableOpacity onPress={() => this.newMessage()} style={styles.checkinButton}>
-                            <Text style={styles.checkinButtonStyles}>Post Message</Text>
+                            <Text style={styles.checkinButtonStyles}>Add Post</Text>
                         </TouchableOpacity>
                     </View>
                 </KeyboardAwareScrollView>
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     movingPostButton: {
-        marginTop: 55
+        marginTop: 50
     }
 })
 
