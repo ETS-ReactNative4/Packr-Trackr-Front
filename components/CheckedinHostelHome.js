@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, Image } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import homeImage from '../assets/prism.png'
-import logo from '../assets/PackrTrackr.png'
+import logo from '../assets/PTlogo.png'
 import friends from '../assets/friends.png'
 import { connect } from 'react-redux'
 import messageBoard from '../assets/messageboard2.png'
@@ -89,17 +89,18 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: 20
     },
+    movingButtons: {
+        marginTop: -215
+    },
     movingLogo: {
         width: '100%',
         alignItems: 'flex-end',
-    },
-    movingButtons: {
-        marginTop: -252
+        paddingRight: 10,
+        marginTop: -6
     },
     logoImage: {
-        height: 78,
-        width: 69,
-        marginRight: 2,
+        height: 88,
+        width: 76,
     },
     buttonStyles: {
         fontSize: 13,
@@ -130,14 +131,15 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     lighterBG: {
-        backgroundColor: 'rgba(250, 250, 250, 0.02)',
-        height: '100%'
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
+        height: '100%',
+        paddingTop: 22
     },
     hostelInformation: {
         width: '100%',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: -70
+        marginTop: -80
     },
     hostelText: {
         fontSize: 20,

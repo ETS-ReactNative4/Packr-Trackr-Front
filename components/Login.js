@@ -1,10 +1,12 @@
 import React from 'react'
-import { View, TextInput, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, TextInput, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { addUsername, addPassword, submitUser, addEmail } from './store/actions/index'
 import homeImage from '../assets/prism.png'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import PTlogo from '../assets/PT4Name.png'
+
 
 
 class Login extends React.Component {
@@ -40,7 +42,13 @@ class Login extends React.Component {
                     resetScrollToCoords={{ x: 0, y: 0 }}
                     scrollEnabled={true}>
                     {/* <View style={styles.mainContainer}> */}
+                    <View style={styles.logoMoving}>
+                        <Image style={styles.logo} source={PTlogo} />
+                    </View>
                     <View style={styles.inputContainer}>
+                        <View>
+                            <Text style={styles.loginHeader}>Login</Text>
+                        </View>
                         <TextInput style={styles.loginInputs} onChangeText={this.addEmailInput}
                             placeholder='Email' />
                         <TextInput style={styles.loginInputs} onChangeText={this.addPasswordInput}
@@ -73,15 +81,12 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     inputContainer: {
-        marginTop: 20,
+        marginTop: 10,
         width: '90%',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingTop: 50,
         paddingBottom: 30,
         backgroundColor: 'rgba(128, 128, 128, 0.96)',
-        // borderColor: 'black',
-        // borderWidth: 1,
         borderRadius: 10,
         shadowColor: '#EB7F2E',
         shadowOffset: { width: 0, height: 1 },
@@ -117,8 +122,11 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     logo: {
-        width: 300,
-        height: 91,
+        width: 226,
+        height: 69,
+    },
+    logoMoving: {
+        marginTop: 13
     },
     landingButtonText: {
         fontSize: 20,
@@ -127,7 +135,13 @@ const styles = StyleSheet.create({
     },
     baseImage: {
         height: '100%',
-    }
+    },
+    loginHeader: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginBottom: 20
+    },
 })
 
 const mapStateToProps = state => {

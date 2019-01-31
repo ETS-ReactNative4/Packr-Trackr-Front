@@ -4,43 +4,36 @@ import { Actions } from 'react-native-router-flux'
 import homeImage from '../assets/prism.png'
 import myImage from '../assets/My_headershot.png'
 import { connect } from 'react-redux'
-import logo from '../assets/PTlogo.png'
 
-
-class Profile extends React.Component {
+class IndividualUser extends React.Component {
     render() {
         return (
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
-                    <View style={styles.lighterBG}>
-                        <View style={styles.logoMoving}>
-                            <Image style={styles.logo} source={logo} />
-                        </View>
-                        <View style={styles.movingEditButton}>
-                            <TouchableOpacity onPress={() => Actions.editProfile()} style={styles.editProfileButton}>
-                                <Text style={styles.editText}>Edit Profile</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <Image style={styles.profileImage} source={{ uri: this.props.currentUser.profile_image }} />
-                        <View style={styles.profileContainer}>
-                            <View style={styles.profileInfo}>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text style={styles.textStyling}>Status: </Text>
-                                    <Text style={{ fontSize: 18 }}>{`${this.props.currentUser.travel_status ? 'Traveling' : 'Saving To Travel'}`}</Text>
-                                </View>
-                                {/* <Text>Current Town</Text>
+                    <View style={styles.movingEditButton}>
+                        <TouchableOpacity onPress={() => Actions.editProfile()} style={styles.editProfileButton}>
+                            <Text style={styles.editText}>Edit Profile</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <Image style={styles.profileImage} source={{ uri: this.props.currentUser.profile_image }} />
+                    <View style={styles.profileContainer}>
+                        <View style={styles.profileInfo}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Text style={styles.textStyling}>Status: </Text>
+                                <Text style={{ fontSize: 18 }}>{`${this.props.currentUser.travel_status ? 'Traveling' : 'Saving To Travel'}`}</Text>
+                            </View>
+                            {/* <Text>Current Town</Text>
                             <Text>Current Hostel</Text> */}
-                                <Text style={styles.textStyling}>About Me:</Text>
-                                <Text style={{ fontSize: 18 }}>{this.props.currentUser.about_me}</Text>
-                            </View>
-                            <View style={styles.tripButtonsSpacing}>
-                                <TouchableOpacity style={styles.tripButtonPast}>
-                                    <Text>Past Trips</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.tripButtonCurrent}>
-                                    <Text>Current Trip</Text>
-                                </TouchableOpacity>
-                            </View>
+                            <Text style={styles.textStyling}>About Me:</Text>
+                            <Text style={{ fontSize: 18 }}>{this.props.currentUser.about_me}</Text>
+                        </View>
+                        <View style={styles.tripButtonsSpacing}>
+                            <TouchableOpacity style={styles.tripButtonPast}>
+                                <Text>Past Trips</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.tripButtonCurrent}>
+                                <Text>Current Trip</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </ImageBackground>
@@ -51,7 +44,7 @@ class Profile extends React.Component {
 
 const styles = StyleSheet.create({
     profileImage: {
-        marginTop: -65,
+        marginTop: -30,
         height: 180,
         width: 180,
         borderRadius: 90
@@ -64,8 +57,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
-        width: '100%',
-        marginTop: -12
+        width: '100%'
     },
     editText: {
         textAlign: 'center',
@@ -135,9 +127,8 @@ const styles = StyleSheet.create({
 
     },
     baseImage: {
-        height: '120%',
-        alignItems: 'center',
-        paddingTop: 5
+        height: '100%',
+        alignItems: 'center'
     },
     profileInfo: {
         // alignItems: 'center',
@@ -148,29 +139,6 @@ const styles = StyleSheet.create({
     textStyling: {
         fontWeight: 'bold',
         fontSize: 18
-    },
-    // logo: {
-    //     width: 226,
-    //     height: 69,
-    // },
-    // logoMoving: {
-    //     marginTop: 12
-    // },
-    logoMoving: {
-        width: '100%',
-        alignItems: 'flex-end',
-        paddingRight: 10,
-        marginTop: 8
-    },
-    logo: {
-        height: 88,
-        width: 76,
-    },
-    lighterBG: {
-        backgroundColor: 'rgba(250, 250, 250, 0.04)',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center'
     }
 
 })
@@ -191,4 +159,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(IndividualUser)

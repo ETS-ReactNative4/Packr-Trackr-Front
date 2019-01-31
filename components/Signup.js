@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, TextInput, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { View, TextInput, ImageBackground, StyleSheet, Text, TouchableOpacity, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
 import homeImage from '../assets/prism.png'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import PTlogo from '../assets/PT4Name.png'
 import { addUsername, addPassword, submitUser, addFirstName, addLastName, addEmail } from './store/actions/index'
 
 // import React from 'react'
@@ -60,8 +61,14 @@ class Signup extends React.Component {
                 <KeyboardAwareScrollView contentContainerStyle={styles.mainContainer}
                     resetScrollToCoords={{ x: 0, y: 0 }}
                     scrollEnabled={true}>
+                    <View style={styles.logoMoving}>
+                        <Image style={styles.logo} source={PTlogo} />
+                    </View>
                     {/* <View style={styles.mainContainer}> */}
                     <View style={styles.inputContainer}>
+                        <View>
+                            <Text style={styles.loginHeader}>Sign Up</Text>
+                        </View>
                         <TextInput style={styles.signUpInputs} onChangeText={this.addFirstNameInput}
                             placeholder='First Name' />
                         <TextInput style={styles.signUpInputs} onChangeText={this.addLastNameInput}
@@ -88,18 +95,17 @@ class Signup extends React.Component {
 }
 const styles = StyleSheet.create({
     mainContainer: {
-        paddingTop: 10,
+        paddingTop: 3,
         width: '100%',
         alignItems: 'center',
         backgroundColor: 'rgba(250, 250, 250, 0.02)',
         height: '100%',
     },
     inputContainer: {
-        marginTop: 20,
+        marginTop: 8,
         width: '90%',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingTop: 20,
         paddingBottom: 30,
         backgroundColor: 'rgba(128, 128, 128, 0.96)',
         borderColor: 'black',
@@ -111,7 +117,7 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     buttonMoving: {
-        marginTop: 30
+        marginTop: 20
     },
     signUpInputs: {
         width: '80%',
@@ -137,10 +143,6 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 1,
     },
-    logo: {
-        width: 300,
-        height: 91,
-    },
     landingButtonText: {
         fontSize: 20,
         color: 'white',
@@ -148,7 +150,20 @@ const styles = StyleSheet.create({
     },
     baseImage: {
         height: '100%',
-    }
+    },
+    logo: {
+        width: 226,
+        height: 69,
+    },
+    logoMoving: {
+        marginTop: 13
+    },
+    loginHeader: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginBottom: 20
+    },
 })
 
 const mapStateToProps = state => {

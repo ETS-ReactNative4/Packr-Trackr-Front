@@ -1,1 +1,1 @@
-export { addHostelMessages, inputHandler, addUsername, addPassword, selectHostel, submitUser, deselectUser, addFirstName, addLastName, addEmail, addCountry, addHostels } from './user'
+export { addHostelStayers, addUserFriends, addHostelMessages, inputHandler, addUsername, addPassword, selectHostel, submitUser, deselectUser, addFirstName, addLastName, addEmail, addCountry, addHostels } from './user'

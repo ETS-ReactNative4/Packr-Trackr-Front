@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     buttonBox: {
-        marginTop: 130
+        marginTop: 80
     },
     logo: {
         width: 300,
@@ -53,10 +53,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     landingScreen: {
-        paddingTop: 10,
+        paddingTop: 150,
         width: '100%',
         alignItems: 'center',
-        backgroundColor: 'rgba(250, 250, 250, 0.02)',
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
         height: '100%'
     },
     baseImage: {

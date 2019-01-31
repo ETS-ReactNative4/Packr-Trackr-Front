@@ -13,13 +13,6 @@ class HostelMessagePost extends React.Component {
     state = {
         messageBody: ''
     }
-    loadHostelMessages = () => {
-        fetch('https://packr-trackr-db.herokuapp.com/hostelmessages')
-            .then(result => result.json())
-            .then((response) => {
-                this.props.onAddHostelMessages(response)
-            })
-    }
     messageInputHandler = (event) => {
         this.setState({
             messageBody: event
@@ -49,7 +42,6 @@ class HostelMessagePost extends React.Component {
                 Actions.messageBoard()
             })
     }
-
 
     render() {
         return (
@@ -114,7 +106,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     lighterBG: {
-        backgroundColor: 'rgba(250, 250, 250, 0.02)',
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
         height: '100%',
         alignItems: 'center',
     },

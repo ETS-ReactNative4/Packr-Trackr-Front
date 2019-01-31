@@ -5,146 +5,47 @@ import { SearchBar } from 'react-native-elements'
 import { connect } from 'react-redux'
 import homeImage from '../assets/prism.png'
 import myImage from '../assets/My_headershot.png'
+import logo from '../assets/PTlogo.png'
+import { addHostelStayers } from './store/actions/index'
+
 
 class HostelStayers extends React.Component {
+    componentDidMount() {
+        this.loadHostelStayers()
+    }
+    loadHostelStayers = () => {
+        fetch(`https://packr-trackr-db.herokuapp.com/hostels/${this.props.selectedHostel.id}/hosteluser`)
+            .then(result => result.json())
+            .then((response) => cosole.log(response))
+            .then((response) => {
+                this.props.onAddHostelStayers(response)
+            })
+    }
 
     render() {
+        const people = this.props.hostelStayers.map(person => {
+            return (
+                <TouchableOpacity key={person.id} style={styles.individualFriendContainer}>
+                    <Image style={styles.profileImage} source={{ uri: person.profile_image }} />
+                    <View style={styles.friendInfoContainer}>
+                        <Text style={styles.friendsName}>{person.first_name} {person.last_name}</Text>
+                        <Text style={styles.friendStatus}>Status: {`${person.travel_status ? 'Traveling' : 'Saving To Travel'}`}</Text>
+                    </View>
+                </TouchableOpacity>
+            )
+        })
+
         return (
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
+                    <View style={styles.logoMoving}>
+                        <Image source={logo} style={styles.logo} />
+                    </View>
                     <View style={styles.movingFriendsContainer}>
                         <SearchBar placeholder="Type Here..." darkTheme round />
                         <ScrollView>
                             <View style={styles.friendsContainer}>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={styles.individualFriendContainer}>
-                                    <Image style={styles.profileImage} source={myImage} />
-                                    <View style={styles.friendInfoContainer}>
-                                        <Text style={styles.friendsName}>Name</Text>
-                                        <Text style={styles.friendStatus}>Status</Text>
-                                        {/* <Text>Location</Text> */}
-                                    </View>
-                                </TouchableOpacity>
-
+                                {people}
                             </View>
                         </ScrollView>
                     </View>
@@ -200,7 +101,34 @@ const styles = StyleSheet.create({
     friendStatus: {
         marginBottom: 8
     },
+    logoMoving: {
+        width: '100%',
+        alignItems: 'flex-end',
+        paddingRight: 8,
+        marginTop: 14
+    },
+    logo: {
+        height: 88,
+        width: 76,
+    },
+    movingFriendsContainer: {
+        marginTop: -14
+    },
 
 })
 
-export default HostelStayers
+const mapStateToProps = state => {
+    return {
+        currentUser: state.users.currentUser,
+        selectedHostel: state.users.selectedHostel,
+        hostelStayers: state.users.hostelStayers
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddHostelStayers: (messages) => dispatch(addHostelStayers(messages))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HostelStayers)

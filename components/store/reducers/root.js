@@ -1,4 +1,4 @@
-import { ADD_HOSTELMESSAGES, ADD_USERNAME, INPUT_HANDLER, ADD_PASSWORD, SELECT_HOSTEL, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_COUNTRY, ADD_EMAIL, ADD_HOSTELS } from '../actions/actionTypes'
+import { ADD_HOSTELSTAYERS, ADD_USERFRIENDS, ADD_HOSTELMESSAGES, ADD_USERNAME, INPUT_HANDLER, ADD_PASSWORD, SELECT_HOSTEL, SUBMIT_USER, DESELECT_USER, ADD_FIRSTNAME, ADD_LASTNAME, ADD_COUNTRY, ADD_EMAIL, ADD_HOSTELS } from '../actions/actionTypes'
 
 const initialState = {
     username: '',
@@ -13,6 +13,8 @@ const initialState = {
     selectedSignup: false,
     hostelList: [],
     hostelMessages: [],
+    friendsList: [],
+    hostelStayers: [],
     currentUser: {
         id: 1,
         first_name: "Dane",
@@ -37,9 +39,21 @@ const userReducer = (state = initialState, action) => {
                 [name]: action
             }
         case ADD_HOSTELMESSAGES:
+            console.log(action.hostelMessages, 'MESSAGES')
             return {
                 ...state,
                 hostelMessages: action.hostelMessages
+            }
+        case ADD_USERFRIENDS:
+            return {
+                ...state,
+                friendsList: action.friendsList
+            }
+        case ADD_HOSTELSTAYERS:
+            console.log(action.hostelStayers, 'PEOPLE')
+            return {
+                ...state,
+                hostelStayers: action.hostelStayers
             }
         case ADD_HOSTELS:
             return {

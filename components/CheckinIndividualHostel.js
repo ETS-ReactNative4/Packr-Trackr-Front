@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import homeImage from '../assets/prism.png'
+import logo from '../assets/PTlogo.png'
+
 
 
 class CheckinIndividualHostel extends React.Component {
@@ -11,16 +13,21 @@ class CheckinIndividualHostel extends React.Component {
         return (
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
-                    <View style={styles.hostelContainer}>
-                        <TouchableOpacity key={this.props.selectedHostel.id} >
-                            <Image style={styles.hostelImage} source={{ uri: this.props.selectedHostel.image }} />
-                            <Text style={styles.hostelName}>Hostel Name:</Text>
-                            <Text style={styles.hostelName}>{this.props.selectedHostel.name}</Text>
-                        </TouchableOpacity>
-                        <View style={styles.movingCheckinButton}>
-                            <TouchableOpacity onPress={() => Actions.checkedin()} style={styles.checkinButton}>
-                                <Text style={styles.checkinButtonText}>Check-In</Text>
+                    <View style={styles.lighterBG}>
+                        <View style={styles.movingLogo}>
+                            <Image source={logo} style={styles.logoImage} />
+                        </View>
+                        <View style={styles.hostelContainer}>
+                            <TouchableOpacity key={this.props.selectedHostel.id} >
+                                <Image style={styles.hostelImage} source={{ uri: this.props.selectedHostel.image }} />
+                                <Text style={styles.hostelName}>Hostel Name:</Text>
+                                <Text style={styles.hostelName}>{this.props.selectedHostel.name}</Text>
                             </TouchableOpacity>
+                            <View style={styles.movingCheckinButton}>
+                                <TouchableOpacity onPress={() => Actions.checkedin()} style={styles.checkinButton}>
+                                    <Text style={styles.checkinButtonText}>Check-In</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
                 </ImageBackground>
@@ -36,7 +43,23 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginLeft: 20,
         width: 250,
-        marginTop: 30
+        marginTop: -50
+    },
+    lighterBG: {
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
+        width: '100%',
+        height: '100%',
+        alignItems: 'center'
+    },
+    movingLogo: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginLeft: 220,
+        marginTop: 13
+    },
+    logoImage: {
+        height: 88,
+        width: 76,
     },
     hostelName: {
         fontSize: 27,
@@ -52,7 +75,7 @@ const styles = StyleSheet.create({
         height: 260,
         width: 260,
         borderRadius: 130,
-        marginTop: 5,
+        marginTop: 35,
         marginBottom: 10,
     },
     hostelDistance: {

@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Image, ImageBackground, ScrollView, TouchableOp
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import homeImage from '../assets/prism.png'
+import logo from '../assets/PTlogo.png'
 import { addHostels, selectHostel } from './store/actions/index';
 
 
@@ -28,12 +29,18 @@ class CheckinListOfHostelsNearby extends React.Component {
         return (
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
-                    <View>
-                        <ScrollView>
-                            <View style={styles.hostelContainer}>
-                                {hostels}
-                            </View>
-                        </ScrollView>
+                    <View style={styles.lighterBG}>
+                        <View style={styles.movingLogo}>
+                            <Image source={logo} style={styles.logoImage} />
+                        </View>
+                        <View style={{ marginTop: -14 }}>
+                            <ScrollView>
+                                <View style={styles.hostelContainer}>
+                                    {hostels}
+                                </View>
+                                <View style={{ height: 215 }}></View>
+                            </ScrollView>
+                        </View>
                     </View>
                 </ImageBackground>
             </View >
@@ -48,7 +55,6 @@ const styles = StyleSheet.create({
     },
     hostelContainer: {
         justifyContent: 'center',
-        marginTop: 4,
         width: 280,
         flexDirection: 'column',
         backgroundColor: 'rgba(128, 128, 128, 0.96)',
@@ -86,6 +92,21 @@ const styles = StyleSheet.create({
     },
     hostelDistance: {
         marginBottom: 8
+    },
+    movingLogo: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginLeft: 220,
+        marginTop: 13
+    },
+    logoImage: {
+        height: 88,
+        width: 76,
+    },
+    lighterBG: {
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
+        width: '100%',
+        alignItems: 'center',
     },
 
 })

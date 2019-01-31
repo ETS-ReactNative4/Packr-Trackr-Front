@@ -47,31 +47,41 @@ class Main extends React.Component {
             <Router>
                 <Stack key="root">
                     <Scene key="landing"
-                        // hideNavBar={true} 
+                        hideNavBar={true}
                         component={Landing} title='Welcome' initial />
                     <Scene renderBackButton={() => (null)}
-                        key="login" component={Login} title="Login" />
+                        navTransparent={1}
+                        key="login" component={Login} title="" />
                     <Scene renderBackButton={() => (null)}
-                        key="signup" component={Signup} title="Sign Up" />
+                        navTransparent={1}
+                        key="signup" component={Signup} title="" />
                     <Scene renderLeftButton={() => (null)}
-                        key="home" component={Home} title="Packr Trackr" />
+                        navTransparent={1}
+                        key="home" component={Home} title="" />
                     <Scene renderBackButton={() => (null)}
-                        key="profile" component={Profile} title="My Profile" />
+                        titleStyle={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 5 }} navTransparent={1}
+                        key="profile" component={Profile} title="Profile" />
                     <Scene renderLeftButton={() => (null)}
-                        key="checkedin" component={CheckedinHostelHome} title="Packr Trackr" />
+                        navTransparent={1}
+                        key="checkedin" component={CheckedinHostelHome} title="" />
                     <Scene renderBackButton={() => (null)} onBack={() => Actions.checkedin()}
+                        titleStyle={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 5 }} navTransparent={1}
                         key="messageBoard" component={HostelMessageBoard} title="Message Board" />
                     <Scene renderBackButton={() => (null)}
                         key="messagePost" component={HostelMessagePost} title="New Message" />
                     <Scene renderBackButton={() => (null)}
-                        key="hostelStayers" component={HostelStayers} title="Find A Friend" />
+                        titleStyle={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 15 }} navTransparent={1}
+                        key="hostelStayers" component={HostelStayers} title="People Here" />
                     <Scene renderBackButton={() => (null)}
+                        titleStyle={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 15 }} navTransparent={1}
                         key="friends" component={UserFriends} title="Friends" />
                     <Scene renderBackButton={() => (null)}
                         key="editProfile" component={EditProfile} title="Edit Profile" />
                     <Scene renderBackButton={() => (null)}
+                        titleStyle={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 5 }} navTransparent={1}
                         key="nearbyHostels" component={CheckinListOfHostelsNearby} title="Hostels Nearby" />
                     <Scene renderBackButton={() => (null)}
+                        titleStyle={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 5 }} navTransparent={1}
                         key="individualHostel" component={CheckinIndividualHostel} title="Confirm" />
                 </Stack>
             </Router>

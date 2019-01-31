@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 100,
+        marginTop: 128,
         marginLeft: 20
     },
     movingButtons: {
-        marginTop: -367
+        marginTop: -348
     },
     logoImage: {
-        height: 270,
-        width: 235,
+        height: 250,
+        width: 217,
         marginRight: 2,
     },
     buttonStyles: {
@@ -129,7 +129,8 @@ const styles = StyleSheet.create({
     //     height: '100%'
     // },
     lighterBG: {
-        backgroundColor: 'rgba(250, 250, 250, 0.02)',
+        paddingTop: 26,
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
         height: '100%'
     }
 

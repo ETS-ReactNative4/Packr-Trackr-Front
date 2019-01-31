@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, ImageBackground, TouchableOpacity, Image, ScrollView } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import homeImage from '../assets/prism.png'
-import logo from '../assets/PackrTrackr.png'
+import logo from '../assets/PTlogo.png'
 import profileImage from '../assets/My_headershot.png'
 import { connect } from 'react-redux'
 import { addHostelMessages } from './store/actions/index'
@@ -14,7 +14,7 @@ class HostelMessageBoard extends React.Component {
         this.loadHostelMessages()
     }
     loadHostelMessages = () => {
-        fetch('https://packr-trackr-db.herokuapp.com/hostelmessages')
+        fetch(`https://packr-trackr-db.herokuapp.com/hostels/${this.props.selectedHostel.id}/hostelmessages`)
             .then(result => result.json())
             .then((response) => {
                 this.props.onAddHostelMessages(response)
@@ -25,10 +25,10 @@ class HostelMessageBoard extends React.Component {
         const messages = this.props.hostelMessages.map(message => {
             return (
                 <TouchableOpacity key={message.id} style={styles.individualMessageContainer} >
-                    <Image style={styles.userImage} source={profileImage} />
+                    <Image style={styles.userImage} source={{ uri: message.profile_image }} />
                     <View style={styles.messageContextContainer}>
-                        <Text style={styles.usersName}>{message.user_id}</Text>
-                        <Text >{message.messageBody}</Text>
+                        <Text style={styles.usersName}>{message.first_name} {message.last_name}</Text>
+                        <Text>{message.messageBody}</Text>
                     </View>
                 </TouchableOpacity>
             )
@@ -37,23 +37,22 @@ class HostelMessageBoard extends React.Component {
             <View>
                 <ImageBackground source={homeImage} style={styles.baseImage}>
                     <View style={styles.lighterBG}>
+                        <View style={styles.movingLogo}>
+                            <Image source={logo} style={styles.logoImage} />
+                        </View>
                         <View style={styles.boardHeader}>
                             <View>
-                                <TouchableOpacity onPress={() => Actions.messagePost()} style={styles.checkinButton}>
-                                    <Text style={styles.checkinButtonStyles}>New Post</Text>
+                                <TouchableOpacity onPress={() => Actions.messagePost()} style={styles.newPostButton}>
+                                    <Text style={styles.newPostButtonStyles}>New Post</Text>
                                 </TouchableOpacity>
-                            </View>
-                            <View style={styles.movingLogo}>
-                                <Image source={logo} style={styles.logoImage} />
                             </View>
                         </View>
                         <ScrollView>
                             <View>
                                 <View style={styles.messagesContainer}>
                                     {messages}
-                                    {messages}
                                 </View>
-                                <View style={{ height: 50 }}></View>
+                                <View style={{ height: 10 }}></View>
                             </View>
                         </ScrollView>
                     </View>
@@ -76,16 +75,26 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: 20
     },
+    // movingLogo: {
+    //     marginLeft: 12,
+    //     marginTop: -8
+    // },
+    // logoImage: {
+    //     height: 78,
+    //     width: 69,
+    //     marginRight: 2,
+    // },
     movingLogo: {
-        marginLeft: 12,
-        marginTop: -8
+        width: '100%',
+        alignItems: 'flex-end',
+        paddingRight: 8,
+        marginTop: 14
     },
     logoImage: {
-        height: 78,
-        width: 69,
-        marginRight: 2,
+        height: 88,
+        width: 76,
     },
-    checkinButton: {
+    newPostButton: {
         backgroundColor: '#EB7F2E',
         borderRadius: 5,
         shadowColor: 'black',
@@ -97,10 +106,9 @@ const styles = StyleSheet.create({
         width: 160,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 76,
-        marginTop: 20
+        marginTop: -30
     },
-    checkinButtonStyles: {
+    newPostButtonStyles: {
         fontWeight: 'bold',
         fontSize: 18,
     },
@@ -108,8 +116,9 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     lighterBG: {
-        backgroundColor: 'rgba(250, 250, 250, 0.02)',
+        backgroundColor: 'rgba(250, 250, 250, 0.04)',
         width: '100%',
+        height: '100%',
         alignItems: 'center',
     },
     individualMessageContainer: {
