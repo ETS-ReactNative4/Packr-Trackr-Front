@@ -17,20 +17,6 @@ import { connect } from 'react-redux'
 import HostelStayers from './HostelStayers';
 import { Actions } from 'react-native-router-flux'
 
-
-//https://packr-trackr-db.herokuapp.com/users
-//DEPLOYED URL
-//https://packr-trackr-db.herokuapp.com/ 
-
-// addUsernameInput = (username) => {
-//     this.props.onAddUsername(username)
-//     console.log(this.props.username)
-
-// }
-// addInitialHostels = (hostels)
-
-
-
 class Main extends React.Component {
     componentDidMount() {
         this.loadHostels()

@@ -8,6 +8,30 @@ import logo from '../assets/PTlogo.png'
 
 
 class CheckinIndividualHostel extends React.Component {
+    newHostelUser = () => {
+        let newHostelUser = {
+            messageBody: this.state.messageBody,
+            hostel_id: this.props.selectedHostel.id,
+            user_id: this.props.currentUser.id,
+        }
+        console.log(newMessage)
+        fetch('https://packr-trackr-db.herokuapp.com/hostelmessages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newMessage)
+        })
+            .then(response => response.json())
+            .then(() => {
+                this.setState({
+                    messageBody: ''
+                })
+            })
+            .then(() => {
+                Actions.messageBoard()
+            })
+    }
 
     render() {
         return (

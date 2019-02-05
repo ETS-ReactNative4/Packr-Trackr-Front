@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 4,
         width: 280,
-        flexDirection: 'column',
+        flexDirection: 'column-reverse',
         backgroundColor: 'rgba(128, 128, 128, 0.96)',
         borderRadius: 5,
         borderColor: 'rgba(235, 128, 46, 0.767)',
