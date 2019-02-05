@@ -4,7 +4,10 @@ As my time at Galvanize was coming to an end we were given the task to create a 
 Packr Trackr is a way for backpackers in the hostel community to stay connected. A user can checkin to a hostel, have access to the hostel's message board and the ability to view people currently staying at the hostel. This allows backpackers to broadcast messages to the entire hostel about adventures/activites that they want to go on. My app also allows backpackers to track their friends trips, message friends, and be notified if they their friend ends up being in the same town they are currently in. 
 
 
-![Packr Trackr Demo](./assets/PackrTrackrDemo.MP4)
+![Packr Trackr Demo Video](./assets/PackrTrackrDemo.MP4)
+[Login Page](./assets/LoginImage.PNG)
+[Home Page](./assets/HomeImage.PNG)
+[Hostel Home](./assets/HostelHome.PNG)
 
 ## Technology Used
 
