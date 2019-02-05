@@ -5,9 +5,9 @@ Packr Trackr is a way for backpackers in the hostel community to stay connected.
 
 
 ![Packr Trackr Demo Video](./assets/PackrTrackrDemo.MP4)
-[Login Page](./assets/LoginImage.PNG)
-[Home Page](./assets/HomeImage.PNG)
-[Hostel Home](./assets/HostelHome.PNG)
+![Login Page](./assets/LoginImage.PNG)
+![Home Page](./assets/HomeImage.PNG)
+![Hostel Home](./assets/HostelHome.PNG)
 
 ## Technology Used
 
