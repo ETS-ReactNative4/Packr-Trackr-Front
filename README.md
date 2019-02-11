@@ -18,7 +18,7 @@ Packr Trackr is a way for backpackers in the hostel community to stay connected.
 
 * [React Native Router Flux](http://docs.nativebase.io/docs/examples/navigation/RNRFBasicExample.html) - Navigation
 
-* [Java Script](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Primary language
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Primary language
 
 
 ## Deployment 
